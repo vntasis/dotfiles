@@ -1,0 +1,92 @@
+# _ _____ _     _            _
+#(_)___ /| |__ | | ___   ___| | _____
+#| | |_ \| '_ \| |/ _ \ / __| |/ / __|
+#| |___) | |_) | | (_) | (__|   <\__ \
+#|_|____/|_.__/|_|\___/ \___|_|\_\___/
+#
+
+
+# Global properties
+separator=true
+separator_block_width=25
+
+#[hostname]
+#command=echo $(hostname)
+#color=#f12711
+#interval=once
+
+[bootmenu]
+full_text=" "
+command=dmenu_shutdown
+
+[folder-mng]
+full_text=" "
+command=termite -e "ranger /home/vntasis"
+
+[vimwiki]
+full_text=" "
+command=termite -e "bash -ic 'vimwiki'"
+
+[calculator]
+full_text=" "
+command=termite -e "calc"
+
+[color-script]
+full_text=" "
+command=termite -e "colorsc"
+
+[brightness]
+#full_text=" "
+command={ echo " : $(light -G)%"; [[ $button = "1" ]] && light -A 10; [[ $button = "3" ]] && light -U 10; [[ $button = "2" ]] && light -S 100; }
+interval=1
+
+[keymap]
+interval=2
+command={ setxkbmap -query | grep layout | awk '{ print "  : " $2 }'; [[ $button = "1" ]] && dmenu_lang; }
+
+[battery]
+interval=5
+command={ bat=$(acpi | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
+color=#bddf0b
+
+[wifi]
+interval=10
+command={ wifi=$(ip addr | sed -n '/wlp/,/ /p' | grep inet | awk '{ print "W : 直 " $2 }'); [[ -z $wifi ]] && echo "W: 睊 " || echo $wifi; }
+color=#76a26f
+
+[ehternet]
+interval=10
+command={ wifi=$(ip addr | sed -n '/enp/,/ /p' | grep inet | awk '{ print "E :  " $2 }'); [[ -z $wifi ]] && echo "E:  " || echo $wifi; }
+color=#f4bc87
+
+[disk]
+interval=3600
+command=echo " : $(df -h | grep sda3 | awk '{ print $4 }')"
+color=#b4eeb4
+
+[cpu-temp]
+interval=10
+command=echo "  糖 : $(acpi -t | cut -d ' ' -f4)" && { [[ $button = "1" ]] && termite -e 'top'; }
+color=#fada5e
+
+[weather]
+#command=echo "杖 :$(curl -Ss 'https://wttr.in' | head -n1 | cut -d ':' -f2) $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)" && { [[ $button = "1" ]] && termite -e 'w3m wttr.in'; }
+command=echo "杖 : $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)" && { [[ $button = "1" ]] && termite -e 'w3m wttr.in'; }
+interval=3600
+color=#A4C2F4
+
+[volume]
+#full_text= :
+command={ echo " : $(pamixer --get-volume-human)"; [[ $button = "1" ]] && pamixer -i 10; [[ $button = "3" ]] && pamixer -d 10; [[ $button = "2" ]] && pamixer --set-volume 100; }
+color=#F79494
+interval=1
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+[time]
+command=echo "  $(date -u '+%Y-%m-%d %H:%M:%S')  "
+interval=5
+color=#7777ff
