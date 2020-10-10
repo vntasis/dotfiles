@@ -1,0 +1,10 @@
+color "type=HEADINGS fg=WHITE bg=BLACK"
+set autocalc
+set numeric
+set numeric_decimal=0
+set overlap
+#set truncate
+set xlsx_readformulas
+set ignorecase
+set external_functions
+set debug
