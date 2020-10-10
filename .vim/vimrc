@@ -1,0 +1,378 @@
+"       _
+"__   _(_)_ __ ___  _ __ ___
+"\ \ / / | '_ ` _ \| '__/ __|
+" \ V /| | | | | | | | | (__
+"  \_/ |_|_| |_| |_|_|  \___|
+
+let mapleader =" "
+inoremap qq <Esc>
+
+if &compatible
+  set nocompatible
+endif
+
+"""Plugins
+call plug#begin()
+"Plug 'jalvesaq/Nvim-R'
+Plug 'tpope/vim-surround'
+Plug 'frazrepo/vim-rainbow'
+Plug 'tc50cal/vim-taglist'
+Plug 'vim-scripts/Vicle'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'vim-scripts/taglist.vim'
+"Plug 'jalvesaq/vimcmdline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vimwiki/vimwiki'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'gabrielelana/vim-markdown'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'eigenfoo/stan-vim'
+call plug#end()
+
+"" Some basics
+set number relativenumber       " configure numbering
+set backspace=indent,eol,start  " more powerful backspacing
+set history=200                 " keep 200 lines of command line history
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+set wildmenu                    " display completion matches in a status line
+set display=truncate
+set ttimeout                    " time out for key codes
+set ttimeoutlen=100             " wait up to 100ms after Esc for special key
+"set mouse=a                    " activate mouse
+set termguicolors               " activate true terminal colours
+colorscheme jellybeans          " set colorscheme (from awesome-vim-colorschemes)
+set cursorline                  " set cursorline highlighting
+set cursorcolumn                " set cursorcolumn highlighting
+highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
+highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
+
+" Background configuration - keep terminal's default background
+" (e.g. for transparent backgrounds, image backgrounds, or a different color)
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+if has('termguicolors') && &termguicolors
+    let g:jellybeans_overrides['background']['guibg'] = 'none'
+endif
+
+" Rainbow configuration
+let g:rainbow_active = 1
+map <leader>r :RainbowToggle<CR>
+
+" Taglist configuration
+map <leader>t :Tlist<CR>
+let Tlist_Use_Right_Window = 1
+let tlist_tex_settings = 'latex;s:sections;g:graphics;l:labels'
+let tlist_make_settings = 'make;m:makros;t:targets'
+let tlist_r_settings = 'R;f:Functions;g:GlobalVariables;v:FunctionVariables'
+
+" Center your line every time you go to insert mode
+autocmd InsertEnter * norm zz
+
+" Vicle configuration
+let g:vicle_use = 'tmux'
+autocmd BufRead,BufNewFile *.R,*.py nmap <leader><CR> :call Vicle_send_command(g:vicle_normal)<CR>lhj
+autocmd BufRead,BufNewFile *.R,*.py imap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_insert)<CR><Esc>jlli
+autocmd BufRead,BufNewFile *.R,*.py vmap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_visual)<CR>
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+" Netrw configuration
+let g:netrw_liststyle = 3      " change the default view type in netrw
+let g:netrw_banner = 0         " remove the directory banner from the netrw view
+let g:netrw_browse_split = 4   " change how files are opened
+let g:netrw_winsize = 25       " change the default window size for netrw
+let g:netrw_altv = 1           " change from left splitting to right splitting
+map <leader>d :Vex<CR>
+
+" vimwiki configuration
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+
+" airline conifguration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '⏽'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep             = '»'
+let g:airline_left_sep             = ' '
+let g:airline_right_sep            = '«'
+let g:airline_right_sep            = ''
+let g:airline_symbols.crypt        = '🔒'
+let g:airline_symbols.linenr       = '☰'
+let g:airline_symbols.linenr       = '␊'
+let g:airline_symbols.linenr       = '␤'
+let g:airline_symbols.linenr       = '¶'
+let g:airline_symbols.maxlinenr    = ''
+let g:airline_symbols.maxlinenr    = ''
+let g:airline_symbols.branch       = ''
+let g:airline_symbols.paste        = 'ρ'
+let g:airline_symbols.paste        = 'Þ'
+let g:airline_symbols.paste        = ''
+let g:airline_symbols.spell        = '暈'
+let g:airline_symbols.notexists    = 'Ɇ'
+let g:airline_symbols.whitespace   = 'Ξ'
+
+" tmuxline configuration
+"let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : ' ',
+    \ 'left_alt': '⏽',
+    \ 'right' : '',
+    \ 'right_alt' : '⏽',
+    \ 'space' : ' '}
+
+" vim-markdown configuration
+"let g:markdown_include_jekyll_support = 0
+"let g:markdown_enable_spell_checking = 0
+"let g:markdown_enable_conceal = 1
+"let g:markdown_mapping_switch_status = '<leader>l'
+"let g:markdown_enable_insert_mode_mappings = 0
+
+" Automatically delete all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
+" Change local working directory to the directory of the file that is currently edited
+map <leader>m :lcd %:p:h<CR>
+autocmd BufRead,BufNewFile *.tex silent! lcd %:p:h " do it automatically for latex files
+
+" Folding method set to manual
+set foldmethod=manual
+" Automatic view writing and loading for automatic saving of the folding
+"autocmd BufWinLeave ?* mkview
+map <leader>v :mkview<CR>
+autocmd BufRead ?* loadview
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+map <leader>o :setlocal spell! spelllang=en<CR>
+
+" Autocomplete shortcuts
+inoremap ;: <C-x><C-f>
+inoremap ;; <C-n>
+
+" Word count shortcuts
+nnoremap <leader>n :w \| -1r !wc %<CR>
+nnoremap <leader>N :w \| -1r !detex % \| wc<CR>
+vnoremap <leader>n :!wc<CR>
+
+" Alias for substitution
+nnoremap <leader>s :%s//g<Left><Left>
+
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+set splitbelow splitright
+
+" Shortcutting split navigation, saving a keypress:
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"" Compile document, be it groff/LaTeX/markdown/etc.
+"map <leader>c :w! \| !compiler <c-r>%<CR>
+"
+autocmd FileType tex nnoremap <buffer> <leader>c :w \| !pdflatex %<CR><CR>
+autocmd FileType tex nnoremap <buffer> <leader>b :w \| !biber "$(basename -s .tex %)"<CR><CR>
+autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>c :w \| !pandoc % -t beamer -o "$(basename -s md %)pdf" <CR><CR>
+autocmd BufRead,BufNewFile *.Rmd nnoremap <buffer> <leader>c :w \| !echo "library(rmarkdown); render('<c-r>%')" \| R --vanilla<CR><CR>
+"
+"" Open corresponding .pdf/.html or preview
+"map <leader>p :!opout <c-r>%<CR><CR>
+"
+autocmd FileType tex nnoremap <buffer> <leader>p :!zathura "$(basename -s tex %)pdf" & <CR><CR>
+autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>p :!zathura "$(basename -s md %)pdf" & <CR><CR>
+autocmd BufRead,BufNewFile *.Rmd nnoremap <buffer> <leader>p :!zathura "$(basename -s Rmd %)pdf" & <CR><CR>
+"
+"" Runs a script that cleans out tex build files whenever I close out of a .tex file.
+"autocmd VimLeave *.tex !texclear %
+autocmd VimLeave *.tex !ls -1 $(basename -s tex %)* | egrep -v 'pdf$|tex$' | xargs rm
+
+" Do incremental searching when it's possible to timeout.
+if has('reltime')
+  set incsearch
+endif
+
+
+" Switch syntax highlighting on when the terminal has colors or when using the
+" GUI (which always has colors).
+if &t_Co > 2 || has("gui_running")
+  " Revert with ":syntax off".
+  syntax on
+
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  " Revert with ":filetype off".
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimStartup | au! | augroup END"
+  augroup vimStartup
+    au!
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+    autocmd BufReadPost *
+      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
+
+  augroup END
+
+endif " has("autocmd")
+
+
+" Move lines in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Alias for switching between buffers
+map <leader>> :bn<CR>
+map <leader>< :bp<CR>
+
+" FileType specific identation
+autocmd FileType tex setlocal ts=4 expandtab sw=2 sts=2 autoindent
+autocmd FileType python setlocal ts=4 expandtab sw=4 sts=4 autoindent
+autocmd FileType sh setlocal ts=4 expandtab sw=4 sts=4 autoindent
+autocmd BufRead,BufNewFile *.R,*.md,vimrc setlocal ts=4 expandtab sw=2 sts=2 autoindent
+
+
+" Disables automatic commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Open files with ranger
+function! RangeChooser()
+    let temp = tempname()
+    " The option "--choosefiles" was added in ranger 1.5.1. Use the next line
+    " with ranger 1.4.2 through 1.5.0 instead.
+    "exec 'silent !ranger --choosefile=' . shellescape(temp)
+    if has("gui_running")
+        exec 'silent !xterm -e ranger --choosefiles=' . shellescape(temp)
+    else
+        exec 'silent !ranger --choosefiles=' . shellescape(temp)
+    endif
+    if !filereadable(temp)
+        redraw!
+        " Nothing to read.
+        return
+    endif
+    let names = readfile(temp)
+    if empty(names)
+        redraw!
+        " Nothing to open.
+        return
+    endif
+    " Edit the first item.
+    exec 'edit ' . fnameescape(names[0])
+    " Add any remaning items to the arg list/buffer list.
+    for name in names[1:]
+        exec 'argadd ' . fnameescape(name)
+    endfor
+    redraw!
+endfunction
+command! -bar RangerChooser call RangeChooser()
+
+" ____        _                  _
+"/ ___| _ __ (_)_ __  _ __   ___| |_ ___
+"\___ \| '_ \| | '_ \| '_ \ / _ \ __/ __|
+" ___) | | | | | |_) | |_) |  __/ |_\__ \
+"|____/|_| |_|_| .__/| .__/ \___|\__|___/
+"              |_|   |_|
+
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap b<Space><Space> <Esc>?<++><Enter>"_c4l
+
+""" LATEX
+"" Reports
+autocmd BufRead,BufNewFile *.tex inoremap <buffer> ;rep %<Enter>% Project report<Enter>%<Enter>\documentclass[a4paper,10pt]{article}<Enter>\usepackage{graphicx}<Enter>\usepackage[english]{babel}<Enter>\usepackage{amsmath}<Enter><++><Enter>%\usepackage{pdfpages}<Enter>\graphicspath{ {<++>} }<Enter>%<Enter>\begin{document}<Enter>%<Enter>%<Enter>\title{<++>}<Enter><Enter>\author{Vasilis F. Ntasis}<Enter><Enter>\maketitle<Enter><Enter>\tableofcontents<Enter><Enter>\newpage<Enter>%<Enter>\section{<++>}<Enter>%<Enter><++><Enter>\end{document}<Esc>ggA
+autocmd FileType tex inoremap <buffer> ;pb \usepackage[<Enter>backend=biber,<Enter>style=nature,<Enter>citestyle=authoryear,<Enter>maxcitenames=3,<Enter>maxbibnames=15<Enter>]{biblatex}<Enter>\addbibresource{}<Esc>mbGO<Esc>O<Enter>\printbibliography[heading=bibintoc]<Esc>'b0f}i
+autocmd FileType tex inoremap <buffer> ;up \usepackage{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;bf \textbf{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;it \textit{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;un \underline{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;em \emph{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;la \label{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;rf \ref{}<++><Esc>T{i
+autocmd FileType tex inoremap <buffer> ;sec \section{}<Enter><Enter><++><Esc>2kf}i
+autocmd FileType tex inoremap <buffer> ;sse \subsection{}<Enter><Enter><++><Esc>2kf}i
+autocmd FileType tex inoremap <buffer> ;pa \paragraph{}<Enter><++><Esc>kf}i
+autocmd FileType tex inoremap <buffer> ;ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
+autocmd FileType tex inoremap <buffer> ;ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
+autocmd FileType tex inoremap <buffer> ;li <Enter>\item<Space>
+autocmd FileType tex inoremap <buffer> ;co %<Space>
+autocmd FileType tex inoremap <buffer> ;ver \begin{verbatim}<Enter><Enter><Enter><Enter>\end{verbatim}<Enter><Enter><++><Esc>4ki
+autocmd FileType tex inoremap <buffer> ;pl \begin{figure}[h]<Enter>\centering<Enter>\includegraphics[page=, width=\textwidth]{<++>}<Enter>\caption{<++>}<Enter>\label{fig:<++>}<Enter>\end{figure}<Enter><++><Esc>4k0f,i
+autocmd FileType tex inoremap <buffer> ;eq \begin{equation}<Enter><Enter>\end{equation}<Enter><Enter><++><Esc>3kA
+autocmd FileType tex inoremap <buffer> ;al \begin{align}<Enter><Enter>\end{align}<Enter><Enter><++><Esc>3kA
+autocmd FileType tex inoremap <buffer> ;ga \begin{gather}<Enter><Enter>\end{gather}<Enter><Enter><++><Esc>3kA
+
+"" Presentations
+autocmd BufRead,BufNewFile *.tex inoremap <buffer> ;pre %<Enter>% Presenation document<Enter>%<Enter>\documentclass{beamer}<Enter>\usepackage{graphicx}<Enter>\usepackage[english]{babel}<Enter>\usepackage{ragged2e}<Enter>\usepackage{amsmath}<Enter><++><Enter>\usefonttheme{structuresmallcapsserif}<Enter>%\usepackage{pdfpages}<Enter>\graphicspath{ {<++>} }<Enter>\usetheme{Singapore}<Enter>\usecolortheme{dove}<Enter>%<Enter>\setbeamertemplate{footline}{%<Enter>\raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}<Enter>\scriptsize\insertframenumber}}}\hspace*{5pt}}<Enter>\beamertemplatenavigationsymbolsempty<Enter>\begin{document}<Enter>%<Enter>%<Enter>\title{<++>}<Enter><Enter>\author{Vasilis F. Ntasis}<Enter><Enter>\maketitle<Enter>%<Enter><++><Enter>\end{document}<Esc>ggA
+autocmd FileType tex inoremap <buffer> ;fr \begin{frame}<Enter>\frametitle{}<Enter><++><Enter><Enter>\end{frame}<Enter><Enter><++><Esc>5k0f}i
+autocmd FileType tex inoremap <buffer> ;tc \begin{frame}<Enter>\frametitle{Table of Contents}<Enter>\tableofcontents<Enter>\end{frame}<Enter>%<Enter>
+autocmd FileType tex inoremap <buffer> ;ef <Space>\pause
+autocmd FileType tex inoremap <buffer> ;cl \begin{columns}<Enter><Enter>x<Enter><Enter>\end{columns}<Enter><Enter><++><Esc>4kxA
+autocmd FileType tex inoremap <buffer> ;ci \column{.5\textwidth}<Enter><Enter>
+autocmd FileType tex inoremap <buffer> ;gr \includegraphics[page=, height=.85\textheight]{<++>}<++><Esc>F,i
+autocmd FileType tex inoremap <buffer> ;bl \setbeamertemplate{bibliography item}{\insertbiblabel}
+autocmd FileType tex inoremap <buffer> ;fb \begin{frame}[allowframebreaks]
+autocmd FileType tex inoremap <buffer> ;mb \makebox[0.9\paperwidth]{<Enter><Enter>x<Enter><Enter>}<Enter><Enter><++><Esc>4kxA
+autocmd FileType tex inoremap <buffer> ;cs \usepackage{array}<Enter>\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+autocmd FileType tex inoremap <buffer> ;dl \makebox[0.9\paperwidth]{<Enter>\includegraphics[height=1cm,keepaspectratio]{<++>}<Enter>\hfill<Enter>\includegraphics[height=1cm,keepaspectratio]{<++>}<Enter>}
+
+"""Markdown
+
+"""R
+autocmd BufRead,BufNewFile *.R inoremap <buffer> " ""<++><Esc>F"i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ' ''<++><Esc>F'i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ` ``<++><Esc>F`i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ( ()<++><Esc>F)i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> [ []<++><Esc>F]i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> { {}<++><Esc>F}i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;a <Space><-<Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;p <Space>%>%<Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;tp <Space>%T>%<Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;dp <Space>%<>%<Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;vp <Space>%$%<Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;in <Space>%in%<Space>
+autocmd BufRead,BufNewFile *.R nmap <buffer> <leader>q ciw"<Esc>pi<Space><Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;fu <Space><-<Space>function(){<Enter><Enter><++><Enter><Enter>}<Enter><Enter><++><Esc>6kf)i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;fo for(){<Enter><Enter><++><Enter><Enter>}<Enter><Enter><++><Esc>6kf)i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;if if(){<Enter><Enter><++><Enter><Enter>}<Enter><Enter><++><Esc>6ki
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;wi while(){<Enter><Enter><++><Enter><Enter>}<Enter><Enter><++><Esc>6kf)i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;ti #<++><Enter>##<Space><Enter>#<++><Enter><Enter><++><Esc>3kA
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;li library()<Enter><++><Esc>kf)i
+autocmd BufRead,BufNewFile *.R imap <buffer> ;st ;tiLoad required librariesb<Space><Space>-------------------------<Space><Space>-------------------------<Space><Space>;litidyverse<Space><Space>;limagrittrb<Space><Space>;liggsci<Space><Space>;livroom<Space><Space>;liggpubrb<Space><Space>
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;sp pdf()<Enter><++><Enter>dev.off()<Enter><++><Esc>3kf)i
+autocmd BufRead,BufNewFile *.R inoremap <buffer> ;sf write.table(, file = "<++>", sep="\t", quote=F, row.names=F<++>)<++><Esc>F(f,i
+
+"""Python
+autocmd FileType python inoremap <buffer> ;ti #<++><Enter>##<Space><Enter>#<++><Enter><Enter><++><Esc>3kA
+autocmd FileType python inoremap <buffer> " ""<++><Esc>F"i
+autocmd FileType python inoremap <buffer> ' ''<++><Esc>F'i
+autocmd FileType python inoremap <buffer> ` ``<++><Esc>F`i
+autocmd FileType python inoremap <buffer> ( ()<++><Esc>F)i
+autocmd FileType python inoremap <buffer> [ []<++><Esc>F]i
+autocmd FileType python inoremap <buffer> { {}<++><Esc>F}i
+autocmd FileType python inoremap <buffer> ;im import<Space><Enter><++><Esc>kA
+autocmd FileType python inoremap <buffer> ;mn def main():<Enter><Enter>a<Enter><Enter><BS>if __name__ == '__main__':<Enter>main()<Esc>3kC
