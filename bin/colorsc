@@ -1,0 +1,7 @@
+#!/bin/bash
+
+path="/home/vntasis/projects/Color-Scripts/color-scripts"
+src="$(ls -1 $path | shuf -n1)"
+
+# Run it and wait
+$path/$src && sleep 10

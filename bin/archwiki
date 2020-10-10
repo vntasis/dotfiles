@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Explore archwiki pages
+# Source: https://github.com/greg-js/arch-wiki-md-repo.git
+
+# Variables
+[ -z $1 ] && lang="english" || lang=$1
+[ -z $2 ] && engine="pdflatex" || engine=$2
+wiki_path="/home/vntasis/arch-wiki-md-repo/wiki/_content/$lang"
+
+# Fzf or dmenu selection | Pandoc transformation | Zathura presentation
+#file=$(ls -1 $wiki_path | fzf --preview='' -e)
+file=$(ls -1 $wiki_path | dmenu -fn 'Mononoki:14' -i -l 20 -p "Select wiki page:")
+[ -z $file ] && exit
+file_path=$(echo "$wiki_path/$file")
+pandoc "$file_path" -f gfm -t pdf --pdf-engine=$engine -o - | zathura -

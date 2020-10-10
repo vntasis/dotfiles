@@ -1,0 +1,2 @@
+#!/bin/sh
+DISPLAY=:0 feh --bg-scale "$(echo "/home/vntasis/Pictures/$(shuf -n1 /home/vntasis/.wallpapers)")"

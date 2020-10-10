@@ -1,0 +1,5 @@
+#!/bin/bash -i
+
+#conda init bash && \
+conda activate bioinfo-tools && \
+    \R -q

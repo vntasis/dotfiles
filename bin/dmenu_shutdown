@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# dmenu script for Lock, Logout, Restart, Shutdown, Sleep, Hibernate
+lock () {
+    /home/vntasis/.config/i3/lock.sh
+}
+
+actions="Lock\nLogout\nRestart\nShutdown\nSleep\nHibernate"
+message="Action:"
+action=$(echo -e $actions | dmenu -fn 'Mononoki:14' -i -l 6 -p $message)
+case "$action" in
+    Lock)
+        lock
+        ;;
+    Logout)
+        i3-msg exit
+        ;;
+
+    Restart)
+        #reboot
+        sudo runit-init 6
+        ;;
+
+    Shutdown)
+        #poweroff
+        sudo runit-init 0
+        ;;
+
+    Sleep)
+        lock && suspend
+        ;;
+
+    Hibernate)
+        lock && hibernate
+        ;;
+esac

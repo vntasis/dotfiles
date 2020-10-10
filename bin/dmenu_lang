@@ -1,0 +1,5 @@
+#!/bin/bash
+
+menu="us\ngr\nes"
+selected=$(echo -e $menu | dmenu -fn 'Hack:14' -i )
+setxkbmap $selected
