@@ -10,4 +10,4 @@ chosen=$(echo "$drives" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select drive to u
 
 #udisksctl power-off -b $(echo $chosen | sed 's/[1-9]//g')
 
-sudo umount $chosen
+sudo umount $chosen && notify-send -u low "$chosen unmounted"

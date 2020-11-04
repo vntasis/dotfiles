@@ -13,4 +13,5 @@ wiki_path="/home/vntasis/arch-wiki-md-repo/wiki/_content/$lang"
 file=$(ls -1 $wiki_path | dmenu -fn 'Mononoki:14' -i -l 20 -p "Select wiki page:")
 [ -z $file ] && exit
 file_path=$(echo "$wiki_path/$file")
-pandoc "$file_path" -f gfm -t pdf --pdf-engine=$engine -o - | zathura -
+error=$(pandoc "$file_path" -f gfm -t pdf --pdf-engine=$engine -o - | zathura - 2>&1 > /dev/null)
+[ -n "$error" ] && notify-send -u critical "Archwiki error" "$error"

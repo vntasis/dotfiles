@@ -13,7 +13,8 @@ mountpoint=$(echo "$dirs" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select the moun
 [ -d "$mountpoint" ] || { mkdiryn=$(echo -e "No\nYes" | dmenu -fn 'Mononoki:14' -i -p "$mountpoint does not exist. Create it?"); \
     [ "$mkdiryn" = "Yes" ] && sudo mkdir -p "$mountpoint"; }
 
-sudo mount $chosen $mountpoint && notify-send "$chosen mounted to $mountpoint."
+sudo mount $chosen $mountpoint && notify-send -u low "$chosen mounted to
+$mountpoint."
 #mountpoint=$(udisksctl mount -b $chosen 2> /dev/null | awk '{print $4}')
 
 #ln -s ${mountpoint%.} $mount_link
