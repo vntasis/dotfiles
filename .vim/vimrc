@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'eigenfoo/stan-vim'
+"Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
 
 "" Some basics
@@ -49,6 +50,16 @@ set cursorline                  " set cursorline highlighting
 set cursorcolumn                " set cursorcolumn highlighting
 highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
 highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
+
+" Delete every buffer except the current one
+command! BufOnly execute '%bdelete|edit #|normal `"'
+
+" Run an external command and append the output in a scratch buffer
+:command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+
+" Execute current line or current selection as Vim EX commands.
+nnoremap <F2> :exe getline(".")<CR>
+vnoremap <F2> :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
 " Background configuration - keep terminal's default background
 " (e.g. for transparent backgrounds, image backgrounds, or a different color)
@@ -78,6 +89,7 @@ let g:vicle_use = 'tmux'
 autocmd BufRead,BufNewFile *.R,*.py nmap <leader><CR> :call Vicle_send_command(g:vicle_normal)<CR>lhj
 autocmd BufRead,BufNewFile *.R,*.py imap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_insert)<CR><Esc>jlli
 autocmd BufRead,BufNewFile *.R,*.py vmap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_visual)<CR>
+autocmd BufRead,BufNewFile *.R vmap <leader>h yo<ESC>pI?<ESC>:call Vicle_send_command(g:vicle_normal)<CR>dd
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
@@ -339,8 +351,10 @@ autocmd FileType tex inoremap <buffer> ;fb \begin{frame}[allowframebreaks]
 autocmd FileType tex inoremap <buffer> ;mb \makebox[0.9\paperwidth]{<Enter><Enter>x<Enter><Enter>}<Enter><Enter><++><Esc>4kxA
 autocmd FileType tex inoremap <buffer> ;cs \usepackage{array}<Enter>\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
 autocmd FileType tex inoremap <buffer> ;dl \makebox[0.9\paperwidth]{<Enter>\includegraphics[height=1cm,keepaspectratio]{<++>}<Enter>\hfill<Enter>\includegraphics[height=1cm,keepaspectratio]{<++>}<Enter>}
+autocmd FileType tex inoremap <buffer> ;bg \setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{}}<++><Esc>F{li
 
 """Markdown
+autocmd BufRead,BufNewFile *.md inoremap <buffer> ;co <!---<Enter><Enter>--><Enter><++><Esc>2kA
 
 """R
 autocmd BufRead,BufNewFile *.R inoremap <buffer> " ""<++><Esc>F"i
