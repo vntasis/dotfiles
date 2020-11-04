@@ -6,6 +6,10 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      normal:
+        ;F: hint links spawn mpv {hint-url}
   content.pdfjs:
     global: true
   content.private_browsing:
