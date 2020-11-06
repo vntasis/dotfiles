@@ -87,6 +87,6 @@ interval=1
 #interval=once
 
 [time]
-command=echo "  $(date -u '+%Y-%m-%d %H:%M:%S')  "
+command=echo "  $(date '+%Y-%m-%d %H:%M:%S')  "
 interval=5
 color=#7777ff
