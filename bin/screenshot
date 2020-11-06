@@ -1,0 +1,8 @@
+#!/bin/sh
+
+dirs=$(find ~ -maxdepth 3 -type d 2>/dev/null)
+tosave=$(echo "$dirs" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select a directory to save the screenshot:")
+[ -z "$tosave" ] && exit 1
+
+scrot -s "$tosave/screenshot.png" && notify-send "screenshot saved
+at $tosave"

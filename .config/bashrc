@@ -138,10 +138,12 @@ alias config="git --git-dir=$HOME/projects/config/ \
 alias weather="curl -Ss wttr.in"
 alias tron="ssh sshtron.zachlatta.com"
 alias top="top -u vntasis"
-alias r="ranger"
+alias rr="ranger"
 alias dmenu="dmenu -fn 'Hack:14'"
 alias R="docker run --name R-env --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro r-env"
 alias Rscript="docker run --rm r-env Rscript"
+alias r="/home/vntasis/miniconda3/envs/r-env/lib/R/library/littler/bin/r"
+alias cheat="cht.sh"
 
 # Functions
 
