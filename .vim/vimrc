@@ -31,6 +31,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'eigenfoo/stan-vim'
 "Plug 'dbeniamine/cheat.sh-vim'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 "" Some basics
@@ -50,6 +51,11 @@ set cursorline                  " set cursorline highlighting
 set cursorcolumn                " set cursorcolumn highlighting
 highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
 highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
+
+" Set IBeam shape in insert mode, underline shape in replace mode and block shape in normal mode.
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " Delete every buffer except the current one
 command! BufOnly execute '%bdelete|edit #|normal `"'
@@ -153,6 +159,9 @@ let g:tmuxline_separators = {
 "let g:markdown_enable_conceal = 1
 "let g:markdown_mapping_switch_status = '<leader>l'
 "let g:markdown_enable_insert_mode_mappings = 0
+
+" Markdown table mode toggle shortcut
+nnoremap <leader>l :TableModeToggle<CR>
 
 " Automatically delete all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
