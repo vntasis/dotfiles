@@ -46,7 +46,7 @@ command={ setxkbmap -query | grep layout | awk '{ print "  : " $2 }'; [[ $but
 
 [battery]
 interval=5
-command={ bat=$(acpi | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
+command={ level=$( acpi | cut -d ',' -f 2 | grep -o '[[:digit:]]' | tr -d '\n' ); [ "$level" -lt 10 ] && notify-send -u critical 'BATTERY' 'Critically low'; bat=$(acpi | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
 color=#bddf0b
 
 [wifi]
