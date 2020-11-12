@@ -234,7 +234,7 @@ bindsym $mod+o resize grow width 10 px or 10 ppt
 bindsym $mod+u resize grow height 10 px or 10 ppt
 
 # Set background
-exec_always feh --bg-scale /home/vntasis/pictures/arch-2.jpg
+exec_always feh --bg-scale /home/vntasis/pictures/DNA_matrix.jpg
 #exec_always feh --bg-scale /home/vntasis/Downloads/lindy.png
 
 # Run compton compositor for terminal transparency
