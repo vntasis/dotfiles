@@ -77,7 +77,8 @@ color=#A4C2F4
 
 [volume]
 #full_text= :
-command={ echo " : $(pamixer --get-volume-human)"; [[ $button = "1" ]] && pamixer -i 10; [[ $button = "3" ]] && pamixer -d 10; [[ $button = "2" ]] && pamixer --set-volume 100; }
+#command={ echo " : $(pamixer --get-volume-human)"; [[ $button = "1" ]] && pamixer -i 10; [[ $button = "3" ]] && pamixer -d 10; [[ $button = "2" ]] && pamixer --set-volume 100; }
+command={ echo " : $(pamixer --get-volume-human)"; [[ $button = "1" ]] && pamixer -i 10; [[ $button = "3" ]] && pamixer -d 10; [[ $button = "2" ]] && termite -e "ncpamixer"; }
 color=#F79494
 interval=1
 
