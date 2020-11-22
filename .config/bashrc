@@ -1,3 +1,5 @@
+# Bash line editor
+[[ $- == *i* ]] && source /home/vntasis/.local/share/blesh/ble.sh --noattach
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -144,6 +146,8 @@ alias R="docker run --name R-env --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:
 alias Rscript="docker run --rm r-env Rscript"
 alias r="/home/vntasis/miniconda3/envs/r-env/lib/R/library/littler/bin/r"
 alias cheat="cht.sh"
+alias v="set -o vi"
+alias e="set -o emacs"
 
 # Functions
 
@@ -232,3 +236,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# bash line editor
+((_ble_bash)) && ble-attach
