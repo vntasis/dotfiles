@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export DISPLAY=:0.0
+notify-send 'Break time' 'Get up!'
