@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export DISPLAY=:0.0
+sudo pacman -Syu --noconfirm && notify-send 'Updates' 'pacman -Syu was run'
