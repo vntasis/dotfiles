@@ -278,4 +278,7 @@ for_window [title="video0 - mpv"] floating enable
 for_window [title="video0 - mpv"] sticky enable
 
 # key binding for webcam toggle
-#bindsym $mod+v exec --no-start-up-id camtoggle
+bindsym $mod+v exec --no-startup-id camtoggle
+
+# Make calc window float by default
+for_window [title="calc"] floating enable
