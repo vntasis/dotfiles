@@ -29,6 +29,8 @@ settings:
       DEFAULT: https://duckduckgo.com/?q={}
       anac: https://anaconda.org/search?q={}
       gth: https://github.com/search?q={}
+      lbr: https://lbry.tv/$/search?q={}
+      ths: https://www.powerthesaurus.org/{}/synonyms
       w: https://en.wikipedia.org/?search={}
       wa: https://wiki.archlinux.org/?search={}
       yt: https://youtube.com/results?search_query={}
