@@ -148,6 +148,7 @@ alias r="/home/vntasis/miniconda3/envs/r-env/lib/R/library/littler/bin/r"
 alias cheat="cht.sh"
 alias v="set -o vi"
 alias e="set -o emacs"
+alias ls="lsd"
 
 # Functions
 
