@@ -8,6 +8,7 @@ killall -q polybar
 # Launch main and sub
 echo "---" | tee -a /tmp/polybar_main.log /tmp/polybar_sub.log
 polybar main >> /tmp/polybar_main.log 2>&1 & disown
+#ln -s /tmp/polybar_mqueue.$! /tmp/ipc-main
 polybar sub >> /tmp/polybar_sub.log 2>&1 & disown
 
 echo "Bars launched..."

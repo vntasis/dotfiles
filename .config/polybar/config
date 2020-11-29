@@ -76,7 +76,7 @@ font-0 = fixed:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = i3
-modules-right = bootmenu folder-mng vimwiki calculator color-script brigthness keymap battery wifi ethernet disk cpu-temp weather volume time
+modules-right = bootmenu folder-mng vimwiki calculator color-script brightness keymap battery wifi ethernet disk cpu-temp weather volume time
 
 tray-position = right
 tray-background = ${root.background}
@@ -160,6 +160,7 @@ type = custom/script
 exec = echo "  $(date '+%Y-%m-%d %H:%M:%S')  "
 format-foreground = #7777ff
 interval = 5
+click-left = termite -e "calcurse" &
 
 
 
@@ -170,7 +171,7 @@ interval = 1
 format-foreground = #F79494
 click-left = pamixer -i 10
 click-right = pamixer -d 10
-click-middle = termite -e "ncpamixer"
+click-middle = termite -e "ncpamixer" &
 
 
 
@@ -179,7 +180,7 @@ type = custom/script
 exec = echo "杖 : $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)"
 interval = 3600
 format-foreground = #A4C2F4
-click-left = termite -e 'w3m wttr.in'
+click-left = termite -e 'w3m wttr.in' &
 
 
 
@@ -188,7 +189,7 @@ type = custom/script
 exec = echo "  糖 : $(acpi -t | cut -d ' ' -f4)"
 interval = 10
 format-foreground = #fada5e
-click-left = termite -e 'top'
+click-left = termite -e 'top' &
 
 
 
@@ -232,54 +233,59 @@ click-left = dmenu_lang
 
 
 
-[module/brigthness]
-type = custom/script
-exec = echo " : $(light -G)%"
-click-left = light -A 10
-click-right = light -U 10
-click-middle = light -S 100
-interval = 1
+[module/brightness]
+type = custom/ipc
+hook-0 = echo " : $(light -G)%"
+click-left = light -A 10 && polybar-msg hook brightness 1
+click-right = light -U 10 && polybar-msg hook brightness 1
+click-middle = light -S 100 && polybar-msg hook brightness 1
+initial = 1
 
 
 
 [module/color-script]
-type = custom/script
-exec = echo " "
-click-left = termite -e "colorsc"
+type = custom/ipc
+hook-0 = echo " "
+click-left = termite -e "colorsc" && polybar-msg hook color-script 1 &
 format-underline=
 format-foreground = ${colors.secondary}
+initial = 1
 
 
 
 [module/calculator]
-type = custom/script
-exec = echo "  ⏽"
-click-left = termite -e "calc"
+type = custom/ipc
+hook-0 = echo "  ⏽"
+click-left = termite -e "calc" && polybar-msg hook calculator 1 &
 format-underline=
 format-foreground = ${colors.secondary}
+initial = 1
 
 
 
 [module/vimwiki]
-type = custom/script
-exec = echo "  ⏽"
-click-left = termite -e "bash -ic 'vimwiki'"
+type = custom/ipc
+hook-0 = echo "  ⏽"
+click-left = termite -e "bash -ic 'vimwiki'" && polybar-msg hook vimwiki 1 &
 format-underline=
 format-foreground = ${colors.secondary}
+initial = 1
 
 
 
 [module/folder-mng]
-type = custom/script
-exec = echo "  ⏽"
-click-left = termite -e "ranger /home/vntasis"
+type = custom/ipc
+hook-0 = echo "  ⏽"
+click-left = termite -e "ranger /home/vntasis" && polybar-msg hook folder-mng 1 &
 format-underline=
 format-foreground = ${colors.secondary}
+initial = 1
 
 
 [module/bootmenu]
-type = custom/script
-exec = echo "  ⏽"
-click-left = dmenu_shutdown
+type = custom/ipc
+hook-0 = echo "  ⏽"
+click-left = dmenu_shutdown && polybar-msg hook bootmenu 1
 format-underline=
 format-foreground = ${colors.secondary}
+initial = 1
