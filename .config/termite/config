@@ -48,7 +48,8 @@ browser = lynx
 #scrollbar = off
 
 [colors]
-background = rgba(10, 10, 10, 0.85)
+#background = rgba(10, 10, 10, 0.85)
+background = rgba(25, 25, 25, 0.85)
 
 # neon theme - taken from termite-style
 foreground=#F8F8F8
