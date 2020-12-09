@@ -108,8 +108,8 @@ margin-bottom =
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
-format-underline =
+label = %title:0:70:...%
+format-underline = #0000
 format-background =
 
 
@@ -123,8 +123,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-format-background =
-format-underline =
+format-underline = #0000
 
 label-mode-padding = 1
 label-mode-foreground = #000
@@ -219,7 +218,7 @@ format-foreground = #76a26f
 
 [module/battery]
 type = custom/script
-exec = { level=$( acpi | cut -d ',' -f 2 | grep -o '[[:digit:]]' | tr -d '\n' ); [ "$level" -lt 10 ] && notify-send -u critical 'BATTERY' 'Critically low'; bat=$(acpi | sed 's/Full,/, :/g' | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
+exec = { level=$( acpi | cut -d ',' -f 2 | grep -o '[[:digit:]]' | tr -d '\n' ); [[ -n "$level" && "$level" -lt 10 ]] && notify-send -u critical 'BATTERY' 'Critically low'; bat=$(acpi | sed 's/Full,/, :/g' | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
 interval = 5
 format-foreground = #bddf0b
 
@@ -247,7 +246,7 @@ initial = 1
 type = custom/ipc
 hook-0 = echo " "
 click-left = termite -e "colorsc" && polybar-msg hook color-script 1 &
-format-underline=
+format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
 
@@ -257,7 +256,7 @@ initial = 1
 type = custom/ipc
 hook-0 = echo "  ⏽"
 click-left = termite -e "calc" && polybar-msg hook calculator 1 &
-format-underline=
+format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
 
@@ -267,7 +266,7 @@ initial = 1
 type = custom/ipc
 hook-0 = echo "  ⏽"
 click-left = termite -e "bash -ic 'vimwiki'" && polybar-msg hook vimwiki 1 &
-format-underline=
+format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
 
@@ -277,7 +276,7 @@ initial = 1
 type = custom/ipc
 hook-0 = echo "  ⏽"
 click-left = termite -e "ranger /home/vntasis" && polybar-msg hook folder-mng 1 &
-format-underline=
+format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
 
@@ -286,6 +285,6 @@ initial = 1
 type = custom/ipc
 hook-0 = echo "  ⏽"
 click-left = dmenu_shutdown && polybar-msg hook bootmenu 1
-format-underline=
+format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
