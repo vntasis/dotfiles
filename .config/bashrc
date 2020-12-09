@@ -149,6 +149,7 @@ alias cheat="cht.sh"
 alias v="set -o vi"
 alias e="set -o emacs"
 alias ls="lsd"
+alias lst="ls --tree"
 
 # Functions
 
