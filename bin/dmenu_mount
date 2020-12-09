@@ -3,14 +3,14 @@
 mountable=$(lsblk -lp | awk '/part +$/ {print $1, "(" $4 ")"}')
 [ -z "$mountable" ] && exit 1
 
-chosen=$(echo "$mountable" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select drive to mount:"| awk '{print $1}')
+chosen=$(echo "$mountable" | dmenu -fn 'Hack:14' -i -l 10 -p "Select drive to mount:"| awk '{print $1}')
 [ -z "$chosen" ] && exit 1
 
 dirs=$(find /mnt /media /home -maxdepth 3 -type d 2>/dev/null)
-mountpoint=$(echo "$dirs" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select the mountpoint:")
+mountpoint=$(echo "$dirs" | dmenu -fn 'Hack:14' -i -l 10 -p "Select the mountpoint:")
 [ -z "$mountpoint" ] && exit 1
 
-[ -d "$mountpoint" ] || { mkdiryn=$(echo -e "No\nYes" | dmenu -fn 'Mononoki:14' -i -p "$mountpoint does not exist. Create it?"); \
+[ -d "$mountpoint" ] || { mkdiryn=$(echo -e "No\nYes" | dmenu -fn 'Hack:14' -i -p "$mountpoint does not exist. Create it?"); \
     [ "$mkdiryn" = "Yes" ] && sudo mkdir -p "$mountpoint"; }
 
 sudo mount $chosen $mountpoint && notify-send -u low "$chosen mounted to

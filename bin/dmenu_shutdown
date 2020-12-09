@@ -7,7 +7,7 @@ lock () {
 
 actions="Lock\nLogout\nRestart\nShutdown\nSleep\nHibernate"
 message="Action:"
-action=$(echo -e $actions | dmenu -fn 'Mononoki:14' -i -l 6 -p $message)
+action=$(echo -e $actions | dmenu -fn 'Hack:14' -i -l 6 -p $message)
 case "$action" in
     Lock)
         lock

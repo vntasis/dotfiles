@@ -23,7 +23,7 @@ settings:
   content.user_stylesheets:
     global: null
   fonts.default_family:
-    global: LiberationSans
+    global: Hack
   fonts.default_size:
     global: 11pt
   url.searchengines:

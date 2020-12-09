@@ -10,7 +10,7 @@ wiki_path="/home/vntasis/arch-wiki-md-repo/wiki/_content/$lang"
 
 # Fzf or dmenu selection | Pandoc transformation | Zathura presentation
 #file=$(ls -1 $wiki_path | fzf --preview='' -e)
-file=$(ls -1 $wiki_path | dmenu -fn 'Mononoki:14' -i -l 20 -p "Select wiki page:")
+file=$(ls -1 $wiki_path | dmenu -fn 'Hack:14' -i -l 20 -p "Select wiki page:")
 [ -z $file ] && exit
 file_path=$(echo "$wiki_path/$file")
 error=$(pandoc "$file_path" -f gfm -t pdf --pdf-engine=$engine -o - | zathura - 2>&1 > /dev/null)

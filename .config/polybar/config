@@ -21,7 +21,8 @@ background = #021318
 background-alt = #2d2d2d
 foreground = #d8dee9
 foreground-alt = #555
-primary = #478583
+#primary = #478583
+primary = #007cce
 secondary = #ff6633
 alert = #cc0001
 
@@ -29,7 +30,7 @@ alert = #cc0001
 bottom = true
 width = 30%
 height = 15
-font-0 = fixed:pixelsize=8;1
+font-0 = Hack:pixelsize=8;1
 override-redirect = true
 offset-x = 35%
 wm-restack = i3
@@ -72,7 +73,7 @@ padding-right =
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = i3

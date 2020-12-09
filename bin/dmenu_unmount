@@ -3,7 +3,7 @@
 drives=$(lsblk -lp | awk '/t +\// && !/boot/  && !/\/$/ && !/home$/ {print $1, "(" $4 ")", "on", $7}')
 [ -z "$drives" ] && exit
 
-chosen=$(echo "$drives" | dmenu -fn 'Mononoki:14' -i -l 10 -p "Select drive to unmount:" | awk '{print $1}')
+chosen=$(echo "$drives" | dmenu -fn 'Hack:14' -i -l 10 -p "Select drive to unmount:" | awk '{print $1}')
 [ -z "$chosen" ] && exit
 
 #udisksctl unmount -b $chosen
