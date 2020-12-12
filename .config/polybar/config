@@ -33,7 +33,8 @@ height = 15
 font-0 = Hack:pixelsize=8;1
 override-redirect = true
 offset-x = 35%
-wm-restack = i3
+;wm-restack = i3
+wm-restack = bspwm
 
 background = ${colors.background}
 line-size = 2
@@ -76,12 +77,13 @@ module-margin-right = 2
 font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
-modules-left = i3
+modules-left = bspwm i3
 modules-right = bootmenu folder-mng vimwiki calculator color-script brightness keymap battery wifi ethernet disk cpu-temp weather volume time
 
 tray-position = right
 tray-background = ${root.background}
 
+wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -113,6 +115,35 @@ label = %title:0:70:...%
 format-underline = #0000
 format-background =
 
+
+[module/bspwm]
+type = internal/bspwm
+format-underline = #0000
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.foreground-alt}
+
+label-occupied = %index%
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.foreground}
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 1
+
+; Separator in between workspaces
+; label-separator = |
 
 
 [module/i3]
