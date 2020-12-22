@@ -226,3 +226,7 @@ alt + shift + m
 # key binding for webcam toggle
 alt + v
 	camtoggle
+
+# key binding for calendar
+alt + z
+	termite -e "calcurse" &
