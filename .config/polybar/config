@@ -78,7 +78,7 @@ font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-right = bootmenu folder-mng vimwiki calculator color-script brightness keymap battery wifi ethernet disk cpu-temp weather volume time
+modules-right = bootmenu folder-mng vimwiki calculator color-script mail brightness keymap battery wifi ethernet disk cpu-temp weather volume time
 
 tray-position = right
 tray-background = ${root.background}
@@ -271,6 +271,14 @@ click-left = light -A 10 && polybar-msg hook brightness 1
 click-right = light -U 10 && polybar-msg hook brightness 1
 click-middle = light -S 100 && polybar-msg hook brightness 1
 initial = 1
+
+
+[module/mail]
+type = custom/script
+exec = echo " : $(ls -1 /home/vntasis/.local/share/mail/vasilisntasis94@gmail.com/INBOX/new/ | wc -l)"
+interval = 1200
+format-foreground = #d76f48
+click-left = termite -e "neomutt" &
 
 
 
