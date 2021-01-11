@@ -275,8 +275,8 @@ initial = 1
 
 [module/mail]
 type = custom/script
-exec = echo " : $(ls -1 /home/vntasis/.local/share/mail/vasilisntasis94@gmail.com/INBOX/new/ | wc -l)"
-interval = 1200
+exec = echo " : $(ls -1 /home/vntasis/.local/share/mail/*/INBOX/new/ | grep -v '^$' | grep -v 'local/share' | wc -l)"
+interval = 600
 format-foreground = #d76f48
 click-left = termite -e "neomutt" &
 
