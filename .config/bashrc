@@ -154,6 +154,11 @@ alias m="neomutt"
 
 # Functions
 
+# column - less shortcut for viewing tables
+tless () {
+    column -ts $'\t' $1 | less -S
+}
+
 # Select an emoji and put it in the clipboard
 emoji () {
 
