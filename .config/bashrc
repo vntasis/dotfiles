@@ -127,9 +127,10 @@ fi
 
 # Variables
 export EDITOR=$(which vim)
-export BROWSER=$(which qutebrowser)
+export BROWSER=$(which librewolf)
 export PATH=$PATH:$HOME/bin
 export FZF_DEFAULT_OPTS="--cycle --preview='preview {}'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Alias
 alias ncol="awk '{print NF; exit}'"

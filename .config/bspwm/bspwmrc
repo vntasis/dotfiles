@@ -12,6 +12,7 @@ bspc rule -r "*"
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x nm-applet > /dev/null || nm-applet &
+pgrep -x blueman-applet > /dev/null || blueman-applet &
 launch_polybar &
 feh --bg-scale /home/vntasis/.config/wallpaper &
 pgrep -x picom > /dev/null || picom &
