@@ -34,6 +34,7 @@ Plug 'eigenfoo/stan-vim'
 "Plug 'dbeniamine/cheat.sh-vim'
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'itchyny/calendar.vim'
+Plug 'LukeGoodsell/nextflow-vim'
 call plug#end()
 
 "" Some basics
@@ -279,7 +280,7 @@ map <leader>< :bp<CR>
 autocmd FileType tex setlocal ts=4 expandtab sw=2 sts=2 autoindent
 autocmd FileType python setlocal ts=4 expandtab sw=4 sts=4 autoindent
 autocmd FileType sh setlocal ts=4 expandtab sw=4 sts=4 autoindent
-autocmd BufRead,BufNewFile *.R,*.md,vimrc setlocal ts=4 expandtab sw=2 sts=2 autoindent
+autocmd BufRead,BufNewFile *.R,*.md,vimrc,*.nf setlocal ts=4 expandtab sw=2 sts=2 autoindent
 
 
 " Disables automatic commenting on newline:
