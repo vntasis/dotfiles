@@ -28,7 +28,7 @@ pgrep -x btops > /dev/null || \
 bspc config automatic_scheme            longest_side
 bspc config initial_polarity            second_child
 
-bspc config pointer_modifier            shift
+bspc config pointer_modifier            mod4
 bspc config focus_follows_pointer       true
 
 bspc config remove_disabled_monitors    true
