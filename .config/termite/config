@@ -79,38 +79,78 @@ browser = lynx
 #color7=#EBEBEB
 #color15=#F8F8F8
 
-# jellybeans colortheme
-cursor = #d7d7d7
-cursor_foreground = #121212
-foreground = #adadad
-foreground_bold = #efefef
-#background = #121212
-background = rgba(18, 18, 18, 0.95)
-highlight = #222222
-#black
-color0 = #1c1c1c
-color8 = #3b3b3b
-#red
-color1 = #d75f5f
-color9 = #ffb964
-#green
-color2 = #72a25a
-color10 = #99ad6a
-#yellow
-color3 = #d8ad4c
-color11 = #fad07a
-#blue
-color4 = #597bc5
-color12 = #8197bf
-#magenta
-color5 = #8787af
-color13 = #d7afff
-#cyan
-color6 = #4a8382
-color14 = #8fbfdc
-#white
-color7 = #adadad
-color15 = #e8e8de
+## jellybeans colortheme
+#cursor = #d7d7d7
+#cursor_foreground = #121212
+#foreground = #adadad
+#foreground_bold = #efefef
+##background = #121212
+#background = rgba(18, 18, 18, 0.95)
+#highlight = #222222
+##black
+#color0 = #1c1c1c
+#color8 = #3b3b3b
+##red
+#color1 = #d75f5f
+#color9 = #ffb964
+##green
+#color2 = #72a25a
+#color10 = #99ad6a
+##yellow
+#color3 = #d8ad4c
+#color11 = #fad07a
+##blue
+#color4 = #597bc5
+#color12 = #8197bf
+##magenta
+#color5 = #8787af
+#color13 = #d7afff
+##cyan
+#color6 = #4a8382
+#color14 = #8fbfdc
+##white
+#color7 = #adadad
+#color15 = #e8e8de
+
+# gruvbox-dark them
+# hard contrast: background = #1d2021
+#background = #282828
+background = rgba(40, 40, 40, 0.95)
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
+
+# dark0 + gray
+color0 = #282828
+color8 = #928374
+
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
+
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
 
 [hints]
 #font = Monospace 12
