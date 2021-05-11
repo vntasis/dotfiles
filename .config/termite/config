@@ -49,35 +49,68 @@ browser = lynx
 
 [colors]
 #background = rgba(10, 10, 10, 0.85)
-background = rgba(40, 42, 54, 0.95)
+#background = rgba(40, 42, 54, 0.95)
 #background = rgba(2, 19, 24, 0.95)
 
 # neon theme - taken from termite-style
-foreground=#F8F8F8
-# black
-color0=#171717
-color8=#38252C
-# red
-color1=#D81765
-color9=#FF0000
-# green
-color2=#97D01A
-color10=#76B639
-# yellow
-color3=#FFA800
-color11=#E1A126
-# blue
-color4=#16B1FB
-color12=#289CD5
-# magenta
-color5=#FF2491
-color13=#FF2491
-# cyan
-color6=#0FDCB6
-color14=#0A9B81
-# white
-color7=#EBEBEB
-color15=#F8F8F8
+#foreground=#F8F8F8
+## black
+#color0=#171717
+#color8=#38252C
+## red
+#color1=#D81765
+#color9=#FF0000
+## green
+#color2=#97D01A
+#color10=#76B639
+## yellow
+#color3=#FFA800
+#color11=#E1A126
+## blue
+#color4=#16B1FB
+#color12=#289CD5
+## magenta
+#color5=#FF2491
+#color13=#FF2491
+## cyan
+#color6=#0FDCB6
+#color14=#0A9B81
+## white
+#color7=#EBEBEB
+#color15=#F8F8F8
+
+# jellybeans colortheme
+cursor = #d7d7d7
+cursor_foreground = #121212
+foreground = #adadad
+foreground_bold = #efefef
+#background = #121212
+background = rgba(18, 18, 18, 0.95)
+highlight = #222222
+#black
+color0 = #1c1c1c
+color8 = #3b3b3b
+#red
+color1 = #d75f5f
+color9 = #ffb964
+#green
+color2 = #72a25a
+color10 = #99ad6a
+#yellow
+color3 = #d8ad4c
+color11 = #fad07a
+#blue
+color4 = #597bc5
+color12 = #8197bf
+#magenta
+color5 = #8787af
+color13 = #d7afff
+#cyan
+color6 = #4a8382
+color14 = #8fbfdc
+#white
+color7 = #adadad
+color15 = #e8e8de
 
 [hints]
 #font = Monospace 12
