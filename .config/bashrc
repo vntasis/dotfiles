@@ -156,6 +156,21 @@ alias m="neomutt"
 
 # Functions
 
+# Storage monitoring
+largepaks () {
+    num="${1:-10}"
+    pacman -Qi | awk '/Name/ { name=$3 } /Size/ { printf "%.3fMB\t%s\n", $4/1024, name }' | sort -rh | head -n $num
+}
+
+ducks () {
+    num="${2:-11}"
+    rest_cmd=$(shopt -p dotglob)  # Get restoration command
+    shopt -s dotglob              # Set option
+    #du -cks $1 | sort -rn | head -n $num
+    du -cksh $1 | sort -rh | head -n $num
+    ${rest_cmd}                   # Restore option
+}
+
 # column - less shortcut for viewing tables
 tless () {
     column -ts $'\t' $1 | less -S
