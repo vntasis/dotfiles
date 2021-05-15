@@ -191,7 +191,7 @@ type = custom/script
 exec = echo "  $(date '+%Y-%m-%d %H:%M:%S')  "
 format-foreground = #7777ff
 interval = 5
-click-left = termite -e "calcurse" &
+click-left = $term -e "calcurse" &
 
 
 
@@ -202,7 +202,7 @@ interval = 1
 format-foreground = #F79494
 click-left = pamixer -i 10
 click-right = pamixer -d 10
-click-middle = termite -e "ncpamixer" &
+click-middle = $term -e "ncpamixer" &
 
 
 
@@ -211,7 +211,7 @@ type = custom/script
 exec = echo "杖 : $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)"
 interval = 3600
 format-foreground = #A4C2F4
-click-left = termite -e 'w3m wttr.in' &
+click-left = $term -e 'w3m' 'wttr.in' &
 
 
 
@@ -220,7 +220,7 @@ type = custom/script
 exec = echo "  糖 : $(acpi -t | cut -d ' ' -f4)"
 interval = 10
 format-foreground = #fada5e
-click-left = termite -e 'top' &
+click-left = $term -e 'top' &
 
 
 
@@ -279,14 +279,14 @@ type = custom/script
 exec = echo " : $(ls -1 /home/vntasis/.local/share/mail/*/INBOX/new/ | grep -v '^$' | grep -v 'local/share' | wc -l)"
 interval = 600
 format-foreground = #d76f48
-click-left = termite -e "neomutt" &
+click-left = $term -e "neomutt" &
 
 
 
 [module/color-script]
 type = custom/ipc
 hook-0 = echo " "
-click-left = termite -e "colorsc" && polybar-msg hook color-script 1 &
+click-left = $term -e "colorsc" && polybar-msg hook color-script 1 &
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
@@ -296,7 +296,7 @@ initial = 1
 [module/calculator]
 type = custom/ipc
 hook-0 = echo "  ⏽"
-click-left = termite -e "calc" && polybar-msg hook calculator 1 &
+click-left = $term -e "calc" && polybar-msg hook calculator 1 &
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
@@ -306,7 +306,7 @@ initial = 1
 [module/vimwiki]
 type = custom/ipc
 hook-0 = echo "  ⏽"
-click-left = termite -e "bash -ic 'vimwiki'" && polybar-msg hook vimwiki 1 &
+click-left = $term -e 'bash' '-ic' 'vimwiki' && polybar-msg hook vimwiki 1 &
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
@@ -316,7 +316,7 @@ initial = 1
 [module/folder-mng]
 type = custom/ipc
 hook-0 = echo "  ⏽"
-click-left = termite -e "ranger /home/vntasis" && polybar-msg hook folder-mng 1 &
+click-left = $term -e "ranger" && polybar-msg hook folder-mng 1 &
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1

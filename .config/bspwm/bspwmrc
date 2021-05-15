@@ -9,6 +9,9 @@
 # Clear previous rules
 bspc rule -r "*"
 
+# Variables
+export term='alacritty'
+
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x nm-applet > /dev/null || nm-applet &

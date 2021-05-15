@@ -19,7 +19,7 @@ XF86AudioMicMute
 
 # terminal emulator
 alt + Return
-	termite
+	$term
 
 # program launcher
 alt + m
@@ -209,7 +209,7 @@ alt + shift + n
 
 # Run ranger file manger
 alt + n
-	rfm
+	$term -e "ranger"
 
 # key bindings for mounting and unmounting drives
 alt + {_,shift +} p
@@ -229,4 +229,4 @@ alt + v
 
 # key binding for calendar
 alt + z
-	termite -e "calcurse" &
+	$term -e "calcurse" &
