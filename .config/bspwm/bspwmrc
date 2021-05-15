@@ -51,7 +51,7 @@ bspc config gapless_monocle             true
 
 
 # Rules
-bspc rule -a '*:*:calc' state=floating
+bspc rule -a 'calc' state=floating
 bspc rule -a 'mpv:video0' state=floating sticky=on
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a Chromium desktop='^2'

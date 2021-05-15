@@ -296,7 +296,7 @@ initial = 1
 [module/calculator]
 type = custom/ipc
 hook-0 = echo "  ⏽"
-click-left = $term -e "calc" && polybar-msg hook calculator 1 &
+click-left = $term --class 'calc,calc' -e 'calc'  && polybar-msg hook calculator 1 &
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
