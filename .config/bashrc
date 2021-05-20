@@ -148,6 +148,11 @@ alias m="neomutt"
 
 # Functions
 
+# Get metadata information from ncbi/sra database
+sra-meta () {
+    esearch -db sra -query $1 | efetch -format runinfo
+}
+
 # Storage monitoring
 largepaks () {
     num="${1:-10}"
