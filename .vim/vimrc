@@ -104,13 +104,42 @@ autocmd BufRead,BufNewFile *.R vmap <leader>h yo<ESC>pI?<ESC>:call Vicle_send_co
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
 
+
+
 " Netrw configuration
 let g:netrw_liststyle = 3      " change the default view type in netrw
 let g:netrw_banner = 0         " remove the directory banner from the netrw view
 let g:netrw_browse_split = 4   " change how files are opened
 let g:netrw_winsize = 25       " change the default window size for netrw
 let g:netrw_altv = 1           " change from left splitting to right splitting
-map <leader>d :Vex<CR>
+"map <leader>d :Vex<CR>
+
+let g:NetrwIsOpen=0
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Vexplore
+    endif
+endfunction
+
+augroup AutoDeleteNetrwHiddenBuffers
+  au!
+  au FileType netrw setlocal bufhidden=wipe
+augroup end
+
+map <leader>d :call ToggleNetrw()<CR>
+
+
 
 " vimwiki configuration
 let g:vimwiki_list = [{'path': '~/vimwiki/',
