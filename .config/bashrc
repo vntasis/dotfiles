@@ -173,6 +173,11 @@ tless () {
     column -ts $'\t' $1 | less -S
 }
 
+# Add a column number
+ctless () {
+    seq $(ncol $1) | awk '{ printf("%d\t",$1) }END{ printf("\n") }' | cat - $1 | tless
+}
+
 # Select an emoji and put it in the clipboard
 emoji () {
 
