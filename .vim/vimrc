@@ -247,6 +247,7 @@ map <C-l> <C-w>l
 autocmd FileType tex nnoremap <buffer> <leader>c :w \| !pdflatex %<CR><CR>
 autocmd FileType tex nnoremap <buffer> <leader>b :w \| !biber "$(basename -s .tex %)"<CR><CR>
 autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>c :w \| !pandoc % -t beamer -o "$(basename -s md %)pdf" <CR><CR>
+autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>b :w \| !pandoc % -s -t beamer --biblatex -o "$(basename -s md %)tex" <CR><CR>
 autocmd BufRead,BufNewFile *.Rmd nnoremap <buffer> <leader>c :w \| !echo "library(rmarkdown); render('<c-r>%')" \| R --vanilla<CR><CR>
 "
 "" Open corresponding .pdf/.html or preview
@@ -258,7 +259,7 @@ autocmd BufRead,BufNewFile *.Rmd nnoremap <buffer> <leader>p :!zathura "$(basena
 "
 "" Runs a script that cleans out tex build files whenever I close out of a .tex file.
 "autocmd VimLeave *.tex !texclear %
-autocmd VimLeave *.tex !ls -1 $(basename -s tex %)* | egrep -v 'pdf$|tex$' | xargs rm
+autocmd VimLeave *.tex !ls -1 $(basename -s tex %)* | egrep -v 'md$|pdf$|tex$' | xargs rm
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
