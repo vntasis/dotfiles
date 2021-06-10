@@ -1,13 +1,25 @@
 #!/bin/sh
 
+# Find drive(s)
 drives=$(lsblk -lp | awk '/t +\// && !/boot/  && !/\/$/ && !/home$/ {print $1, "(" $4 ")", "on", $7}')
 [ -z "$drives" ] && exit
 
+# Choose drive to unmount
 chosen=$(echo "$drives" | dmenu -fn 'Hack:14' -i -l 10 -p "Select drive to unmount:" | awk '{print $1}')
 [ -z "$chosen" ] && exit
 
-#udisksctl unmount -b $chosen
+# Unmount
+udisksctl unmount -b $chosen && \
+    notify-send -u low "$chosen unmounted"
 
-#udisksctl power-off -b $(echo $chosen | sed 's/[1-9]//g')
+# Unlink local symlink
+dirs=$(find /mnt /media /home -maxdepth 3 -type l 2>/dev/null)
+unlnk=$(echo -e "Yes\nNo" | dmenu -fn 'Hack:14' -i -p "Is there a symlink of the drive to unlink?") && \
+  [ "$unlnk" = "Yes" ] && \
+  lnk=$(echo "$dirs" | dmenu -fn 'Hack:14' -i  -l 10 -p "Select the symlink:") && \
+  unlink "$lnk"
 
-sudo umount $chosen && notify-send -u low "$chosen unmounted"
+# Poweroff drive
+poff=$(echo -e "Yes\nNo" | dmenu -fn 'Hack:14' -i -p "Poweroff the drive?") && \
+  [ "$poff" = "Yes" ] && \
+  udisksctl power-off -b $(echo $chosen | sed 's/[1-9]//g')

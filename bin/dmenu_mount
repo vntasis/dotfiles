@@ -1,20 +1,24 @@
 #!/bin/sh
 
+# Find drive(s)
 mountable=$(lsblk -lp | awk '/part +$/ {print $1, "(" $4 ")"}')
 [ -z "$mountable" ] && exit 1
 
+# Choose drive to mount
 chosen=$(echo "$mountable" | dmenu -fn 'Hack:14' -i -l 10 -p "Select drive to mount:"| awk '{print $1}')
 [ -z "$chosen" ] && exit 1
 
+# Choose a directory to symlink the mountpoint
 dirs=$(find /mnt /media /home -maxdepth 3 -type d 2>/dev/null)
-mountpoint=$(echo "$dirs" | dmenu -fn 'Hack:14' -i -l 10 -p "Select the mountpoint:")
-[ -z "$mountpoint" ] && exit 1
+lnk=$(echo -e "Yes\nNo" | dmenu -fn 'Hack:14' -i -p "Link mountpoint to another directory?") && \
+  [ "$lnk" = "Yes" ] && \
+  mount_link=$(echo "$dirs" | dmenu -fn 'Hack:14' -i -l 10 -p "Select directory to symlink the mountpoint:")
+[ -z "$mount_link" ] && exit 1
 
-[ -d "$mountpoint" ] || { mkdiryn=$(echo -e "No\nYes" | dmenu -fn 'Hack:14' -i -p "$mountpoint does not exist. Create it?"); \
-    [ "$mkdiryn" = "Yes" ] && sudo mkdir -p "$mountpoint"; }
+# Mount drive
+mountpoint=$(udisksctl mount -b $chosen 2> /dev/null | awk '{print $4}')
 
-sudo mount $chosen $mountpoint && notify-send -u low "$chosen mounted to
-$mountpoint."
-#mountpoint=$(udisksctl mount -b $chosen 2> /dev/null | awk '{print $4}')
+# Create symlink
+ln -s ${mountpoint%.} $mount_link && \
+    notify-send -u low "$chosen mounted to $mount_link."
 
-#ln -s ${mountpoint%.} $mount_link
