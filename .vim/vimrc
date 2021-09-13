@@ -17,8 +17,8 @@ call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'frazrepo/vim-rainbow'
 Plug 'tc50cal/vim-taglist'
-Plug 'vim-scripts/Vicle'
-"Plug 'jpalardy/vim-slime'
+"Plug 'vim-scripts/Vicle'
+Plug 'jpalardy/vim-slime'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'vim-scripts/taglist.vim'
 "Plug 'jalvesaq/vimcmdline'
@@ -95,11 +95,17 @@ let tlist_r_settings = 'R;f:Functions;g:GlobalVariables;v:FunctionVariables'
 autocmd InsertEnter * norm zz
 
 " Vicle configuration
-let g:vicle_use = 'tmux'
-autocmd BufRead,BufNewFile *.R,*.py nmap <leader><CR> :call Vicle_send_command(g:vicle_normal)<CR>lhj
-autocmd BufRead,BufNewFile *.R,*.py imap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_insert)<CR><Esc>jlli
-autocmd BufRead,BufNewFile *.R,*.py vmap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_visual)<CR>
-autocmd BufRead,BufNewFile *.R vmap <leader>h yo<ESC>pI?<ESC>:call Vicle_send_command(g:vicle_normal)<CR>dd
+"let g:vicle_use = 'tmux'
+"autocmd BufRead,BufNewFile *.R,*.py nmap <leader><CR> :call Vicle_send_command(g:vicle_normal)<CR>lhj
+"autocmd BufRead,BufNewFile *.R,*.py imap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_insert)<CR><Esc>jlli
+"autocmd BufRead,BufNewFile *.R,*.py vmap <leader><CR> <ESC>:call Vicle_send_command(g:vicle_visual)<CR>
+"autocmd BufRead,BufNewFile *.R vmap <leader>h yo<ESC>pI?<ESC>:call Vicle_send_command(g:vicle_normal)<CR>dd
+
+" Vim-Slime configuration
+let g:slime_target = 'tmux'
+autocmd BufRead,BufNewFile *.R,*.py vmap <leader><CR> <c-c><c-c>
+autocmd BufRead,BufNewFile *.R vmap <leader>h yo<ESC>pI?<ESC>:SlimeSendCurrentLine<CR>dd
+
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
