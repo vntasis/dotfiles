@@ -235,6 +235,9 @@ nnoremap <leader>n :w \| -1r !wc %<CR>
 nnoremap <leader>N :w \| -1r !detex % \| wc<CR>
 vnoremap <leader>n :!wc<CR>
 
+" Run cht.sh on the selected text in visual mode
+vnoremap <leader>H y:!echo '\#==========Cheatsheet search==========\#' && cht.sh <C-r>" <CR>
+
 " Alias for substitution
 nnoremap <leader>s :%s//g<Left><Left>
 
