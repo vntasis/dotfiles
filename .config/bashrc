@@ -148,6 +148,12 @@ alias m="neomutt"
 
 # Functions
 
+# Find RSS/Atom feed urls from a webpage
+
+feed_find () {
+    curl -L -s $1 | sfeed_web $1
+}
+
 # Get metadata information from ncbi/sra database
 sra-meta () {
     esearch -db sra -query $1 | efetch -format runinfo
