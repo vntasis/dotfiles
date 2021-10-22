@@ -201,7 +201,7 @@ alt + {F1,F2,F3}
 
 # Run qutebrowser
 alt + q
-	quickmark
+	call_quickmark_fzf &
 
 # Screenshot
 alt + shift + n
