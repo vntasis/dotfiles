@@ -5,11 +5,8 @@ set -eu
 # File
 quickmarks='/home/vntasis/.config/qutebrowser/quickmarks'
 
-# fzf_menu
-fzf_menu='/home/vntasis/bin/fzf_menu'
-
 # fzf_menu selection
-url=$($fzf_menu $quickmarks 'Select a quickmark:' | cut -d ' ' -f2)
+url=$(fzf_menu $quickmarks 'Select a quickmark:' | cut -d ' ' -f2)
 
 # Save quickmark to a temporary file
 echo $url > /home/vntasis/.quickmark

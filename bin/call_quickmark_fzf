@@ -4,6 +4,6 @@ set -eu
 
 quickmark_tmp='/home/vntasis/.quickmark'
 
-alacritty --class 'Alacritty,fzf_menu' -e 'quickmark_fzf' && \
+alacritty --class 'Quickmarks,fzf_menu' -e 'quickmark_fzf' && \
     cat $quickmark_tmp | xclip -selection 'clipboard' && \
     rm $quickmark_tmp
