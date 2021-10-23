@@ -6,11 +6,12 @@ set -eu
 # Input file
 input=$1
 prompt=$2
+order=${3-'--tac'}
 
 # fzf selection
 cat $input | \
     fzf -m --preview='' \
-    --tac --reverse --header="$prompt" \
+    ${order} --reverse --header="$prompt" \
     --info='inline' --border='horizontal'
 
 

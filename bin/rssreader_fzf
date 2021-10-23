@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+url=$(\
+sfeed_plain "$HOME/.sfeed/feeds/"* | \
+awk '
+$1=="N" { print $0 }
+$1!="N" && !seen[$3]++ { count=1 }
+$1!="N" && count <= 5 { count++; print $0 }' | \
+fzf_menu  - 'Select feed(s):' '' | \
+sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p') && \
+\
+test -n "$url" && $BROWSER $url
+

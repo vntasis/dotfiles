@@ -2,15 +2,5 @@
 
 set -eu
 
-sfeed_update && \
-\
-url=$(\
-sfeed_plain "$HOME/.sfeed/feeds/"* | \
-awk '
-$1=="N" { print $0 }
-$1!="N" && !seen[$3]++ { count=1 }
-$1!="N" && count <= 5 { count++; print $0 }' | \
-dmenu -fn "Hack:14" -l 35 -i | \
-sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p') && \
-\
-test -n "${url}" && $BROWSER "${url}"
+alacritty --class 'RSS,fzf_menu' -e 'rssreader_fzf'
+
