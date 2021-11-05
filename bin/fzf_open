@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -eu
+
+file=$(find /home/vntasis/ -type f | \
+    fzf_menu - 'Select file to edit:' '')
+
+tmux new-session "vim $file"

@@ -203,6 +203,10 @@ alt + {F1,F2,F3}
 alt + q
 	call_quickmark_fzf &
 
+# Select a file with fzf to be edited
+alt + g
+	$term -e "fzf_open" &
+
 # Screenshot
 alt + shift + n
 	scrot
