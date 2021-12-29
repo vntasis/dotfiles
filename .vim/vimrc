@@ -36,6 +36,7 @@ Plug 'dhruvasagar/vim-table-mode'
 "Plug 'itchyny/calendar.vim'
 Plug 'LukeGoodsell/nextflow-vim'
 Plug 'mbbill/undotree'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 "" Some basics
@@ -48,13 +49,15 @@ set wildmenu                    " display completion matches in a status line
 set display=truncate
 set ttimeout                    " time out for key codes
 set ttimeoutlen=100             " wait up to 100ms after Esc for special key
-set mouse=a                    " activate mouse
+set mouse=a                     " activate mouse
 set termguicolors               " activate true terminal colours
 colorscheme jellybeans          " set colorscheme (from awesome-vim-colorschemes)
 set cursorline                  " set cursorline highlighting
 set cursorcolumn                " set cursorcolumn highlighting
 highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
 highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
+set list listchars=trail:·,eol:¬ " Show trailing white space and end of line characters as a character
+
 
 " Set IBeam shape in insert mode, underline shape in replace mode and block shape in normal mode.
 let &t_SI = "\<Esc>[6 q"
@@ -65,7 +68,7 @@ let &t_EI = "\<Esc>[2 q"
 command! BufOnly execute '%bdelete|edit #|normal `"'
 
 " Run an external command and append the output in a scratch buffer
-:command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 
 " Execute current line or current selection as Vim EX commands.
 nnoremap <F2> :exe getline(".")<CR>
@@ -208,6 +211,10 @@ let g:table_mode_header_fillchar='='
 " Undotree toggle shortcut and configuration
 nnoremap <leader>u :UndotreeToggle<CR>
 
+" ALE lsp configuration
+let g:ale_enabled=0
+nnoremap <leader>a :ALEToggle<CR>
+set completeopt=menu,menuone,popup,noselect,noinsert
 
 " Automatically delete all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
