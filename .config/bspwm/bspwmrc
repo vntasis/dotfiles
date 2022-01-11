@@ -16,7 +16,7 @@ export term='alacritty'
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x nm-applet > /dev/null || nm-applet &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
-launch_polybar &
+sleep 8 && launch_polybar &
 feh --bg-scale /home/vntasis/.config/wallpaper &
 pgrep -x picom > /dev/null || picom &
 light -I &
@@ -25,7 +25,7 @@ pgrep -x btops > /dev/null || btops &
 # Declare monitors and desktops
 pgrep -x btops > /dev/null || \
     { bspc monitor LVDS-1 -d  1 2 3 4 5 && \
-        bspc monitor VGA-1 -d 6 7 8 9 10; }
+        bspc monitor HDMI-1 -d 6 7 8 9 10; }
 
 # Global settings
 bspc config automatic_scheme            longest_side
