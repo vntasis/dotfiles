@@ -209,7 +209,7 @@ alt + g
 
 # Screenshot
 alt + shift + n
-	scrot
+	screenshot
 
 # Run ranger file manger
 alt + n
