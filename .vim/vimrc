@@ -56,7 +56,7 @@ set cursorline                  " set cursorline highlighting
 set cursorcolumn                " set cursorcolumn highlighting
 highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
 highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
-set list listchars=trail:·,eol:¬ " Show trailing white space and end of line characters as a character
+set list listchars=tab:\|\-,trail:·,eol:¬ " Show trailing white space and end of line characters as a character
 
 
 " Set IBeam shape in insert mode, underline shape in replace mode and block shape in normal mode.
