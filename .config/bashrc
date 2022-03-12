@@ -148,6 +148,11 @@ alias m="neomutt"
 
 # Functions
 
+# Update all conda environments
+conda_update () {
+    conda env list | awk '$0!~"^#" { print $1 }' | xargs -i mamba update --all -n {}
+}
+
 # Find RSS/Atom feed urls from a webpage
 
 feed_find () {
