@@ -330,8 +330,7 @@ map <leader>< :bp<CR>
 
 " FileType specific identation
 autocmd FileType tex setlocal ts=4 expandtab sw=2 sts=2 autoindent
-autocmd FileType python setlocal ts=4 expandtab sw=4 sts=4 autoindent
-autocmd FileType sh setlocal ts=4 expandtab sw=4 sts=4 autoindent
+autocmd FileType python,awk,sh setlocal ts=4 expandtab sw=4 sts=4 autoindent
 autocmd BufRead,BufNewFile *.R,*.md,vimrc,*.nf setlocal ts=4 expandtab sw=2 sts=2 autoindent
 
 
