@@ -8,15 +8,15 @@ mountable=$(lsblk -lp | awk '/part +$/ {print $1, "(" $4 ")"}')
 chosen=$(echo "$mountable" | dmenu -fn 'Hack:14' -i -l 10 -p "Select drive to mount:"| awk '{print $1}')
 [ -z "$chosen" ] && exit 1
 
+# Mount drive
+mountpoint=$(udisksctl mount -b $chosen 2> /dev/null | awk '{print $4}')
+
 # Choose a directory to symlink the mountpoint
 dirs=$(find /mnt /media /home -maxdepth 3 -type d 2>/dev/null)
 lnk=$(echo -e "Yes\nNo" | dmenu -fn 'Hack:14' -i -p "Link mountpoint to another directory?") && \
   [ "$lnk" = "Yes" ] && \
   mount_link=$(echo "$dirs" | dmenu -fn 'Hack:14' -i -l 10 -p "Select directory to symlink the mountpoint:")
 [ -z "$mount_link" ] && exit 1
-
-# Mount drive
-mountpoint=$(udisksctl mount -b $chosen 2> /dev/null | awk '{print $4}')
 
 # Create symlink
 ln -s ${mountpoint%.} $mount_link && \
