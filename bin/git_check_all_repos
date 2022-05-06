@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+
+
+ls "$HOME/projects" | \
+    grep -Ev 'non_git_projects|config$|private' | \
+    xargs -I % sh -c '\
+        echo -e %"\n==========="
+        cd "$HOME/projects/%"
+        git remote update origin
+        git_compare_remote
+        echo -e "\n-----------\n"'
