@@ -180,7 +180,7 @@ alt + {Left,Down,Up,Right}
 
 # Cycle through the layouts
 alt + c
-	bsp-layout cycle --layouts tall,wide,monocle
+	bsp-layout next --layouts tall,wide,monocle
 
 # Remove layout
 alt + shift + c
