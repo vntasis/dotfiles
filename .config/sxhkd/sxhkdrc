@@ -48,7 +48,7 @@ alt + shift + e
 #alt + {_,shift + }w
 #	bspc node -{c,k}
 alt + shift + q
-	bspc node -c
+	bspc node -c && bspunhide
 
 # alternate between the tiled and monocle layout
 alt + e
