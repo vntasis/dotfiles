@@ -234,7 +234,7 @@ format-foreground = #b4eeb4
 
 [module/ethernet]
 type = custom/script
-exec = { wifi=$(ip addr | sed -n '/enp/,/ /p' | grep inet | awk '{ print "E :  " $2 }'); [[ -z $wifi ]] && echo "E:  " || echo $wifi; }
+exec = { wifi=$(ip addr | sed -n '/eth0/,/ /p' | grep inet | awk '{ print "E :  " $2 }'); [[ -z $wifi ]] && echo "E:  " || echo $wifi; }
 interval = 10
 format-foreground = #f4bc87
 
@@ -242,7 +242,7 @@ format-foreground = #f4bc87
 
 [module/wifi]
 type = custom/script
-exec = { wifi=$(ip addr | sed -n '/wlp/,/ /p' | grep inet | awk '{ print "W : 直 " $2 }'); [[ -z $wifi ]] && echo "W: 睊 " || echo $wifi; }
+exec = { wifi=$(ip addr | sed -n '/wlan0/,/ /p' | grep inet | awk '{ print "W : 直 " $2 }'); [[ -z $wifi ]] && echo "W: 睊 " || echo $wifi; }
 interval = 10
 format-foreground = #76a26f
 
