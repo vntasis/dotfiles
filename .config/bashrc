@@ -145,6 +145,7 @@ alias e="set -o emacs"
 alias ls="lsd"
 alias lst="ls --tree"
 alias m="neomutt"
+alias qr_cat="zbarimg -q --raw"
 
 # Functions
 
