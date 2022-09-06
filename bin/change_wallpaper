@@ -1,2 +1,12 @@
 #!/bin/sh
-DISPLAY=:0 feh --bg-scale "$(echo "/home/vntasis/Pictures/$(shuf -n1 /home/vntasis/.wallpapers)")"
+
+set -euo pipefail
+
+# Select Image
+image=$(find /usr/share/backgrounds/ -iname '*.jpg' -o -iname '*.png'  | sxiv -iotN 'wallpaper')
+
+# Set wallpaper
+unlink /home/vntasis/.config/wallpaper
+ln -s "$image" /home/vntasis/.config/wallpaper
+DISPLAY=:0 feh --bg-scale /home/vntasis/.config/wallpaper
+#DISPLAY=:0 feh --bg-scale "$(echo "/home/vntasis/Pictures/$(shuf -n1 /home/vntasis/.wallpapers)")"
