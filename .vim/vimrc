@@ -228,7 +228,7 @@ set foldmethod=manual
 " Automatic view writing and loading for automatic saving of the folding
 "autocmd BufWinLeave ?* mkview
 map <leader>v :mkview<CR>
-autocmd BufRead ?* loadview
+"autocmd BufRead ?* loadview
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <leader>o :setlocal spell! spelllang=en<CR>
