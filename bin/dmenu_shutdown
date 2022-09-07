@@ -19,12 +19,14 @@ case "$action" in
 
     Restart)
         #reboot
-        sudo runit-init 6
+        #sudo runit-init 6
+        loginctl reboot
         ;;
 
     Shutdown)
         #poweroff
-        sudo runit-init 0
+        #sudo runit-init 0
+        loginctl poweroff
         ;;
 
     Sleep)
