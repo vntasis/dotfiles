@@ -4,9 +4,11 @@ set -euo pipefail
 
 # Select Image
 image=$(find /usr/share/backgrounds/ -iname '*.jpg' -o -iname '*.png'  | sxiv -iotN 'wallpaper')
+[ -z "$image" ] && exit 0
 
 # Set wallpaper
-unlink /home/vntasis/.config/wallpaper
-ln -s "$image" /home/vntasis/.config/wallpaper
-DISPLAY=:0 feh --bg-scale /home/vntasis/.config/wallpaper
+wall_path="/home/vntasis/.config/wallpaper"
+[ -e "$wall_path" ] && unlink "$wall_path"
+ln -s "$image" "$wall_path"
+DISPLAY=:0 feh --bg-scale "$wall_path"
 #DISPLAY=:0 feh --bg-scale "$(echo "/home/vntasis/Pictures/$(shuf -n1 /home/vntasis/.wallpapers)")"
