@@ -146,6 +146,8 @@ alias ls="lsd"
 alias lst="ls --tree"
 alias m="neomutt"
 alias qr_cat="zbarimg -q --raw"
+alias pdf2a4="pdfjam --paper a4paper --outfile"
+alias pdf2png="pdftoppm -png"
 
 # Functions
 
