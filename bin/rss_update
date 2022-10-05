@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+export DISPLAY=:0.0
+sfeed_update && notify-send -u normal 'Updates' 'RSS feeds were updated'
