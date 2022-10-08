@@ -10,11 +10,13 @@ echo "---" | tee -a /tmp/polybar_main.log /tmp/polybar_sub.log
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     MONITOR=$m polybar main >> /tmp/polybar_main.log 2>&1 & disown
-    MONITOR=$m polybar sub >> /tmp/polybar_sub.log 2>&1 & disown
+    MONITOR=$m polybar sub1 >> /tmp/polybar_sub.log 2>&1 & disown
+    MONITOR=$m polybar sub2 >> /tmp/polybar_sub.log 2>&1 & disown
   done
 else
     polybar main >> /tmp/polybar_main.log 2>&1 & disown
-    polybar sub >> /tmp/polybar_sub.log 2>&1 & disown
+    polybar sub1 >> /tmp/polybar_sub.log 2>&1 & disown
+    polybar sub2 >> /tmp/polybar_sub.log 2>&1 & disown
 fi
 
 #ln -s /tmp/polybar_mqueue.$! /tmp/ipc-main

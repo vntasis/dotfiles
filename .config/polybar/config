@@ -26,14 +26,14 @@ primary = #007cce
 secondary = #ff6633
 alert = #cc0001
 
-[bar/sub]
+[bar/sub1]
 bottom = true
 width = 30%
 height = 15
 font-0 = Hack:pixelsize=8;1
 override-redirect = true
-offset-x = 35%
-;wm-restack = i3
+offset-x = 3%
+radius = 6
 wm-restack = bspwm
 
 background = ${colors.background}
@@ -45,6 +45,30 @@ module-margin-left = 0
 module-margin-right = 2
 
 modules-center = xwindow
+
+[bar/sub2]
+bottom = true
+width = 30%
+height = 15
+font-0 = Hack:pixelsize=8;1
+font-1 = mononokiNerdFont:pixelsize=8;1
+override-redirect = true
+offset-x = 67%
+radius = 6
+wm-restack = bspwm
+fixed-center = true
+enable-ipc = true
+
+background = ${colors.background}
+line-size = 2
+line-color = ${colors.primary}
+foreground = ${colors.foreground}
+
+module-margin-left = 0
+module-margin-right = 5
+
+modules-center = weather time color-script
+
 
 [bar/main]
 monitor = ${env:MONITOR:LVDS-1}
@@ -78,7 +102,7 @@ font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-right = bootmenu folder-mng vimwiki calculator color-script mail brightness keymap battery wifi ethernet disk cpu-temp weather volume time
+modules-right = bootmenu folder-mng vimwiki calculator mail brightness keymap battery wifi ethernet disk cpu-temp volume
 
 tray-position = right
 tray-background = ${root.background}
