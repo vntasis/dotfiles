@@ -102,7 +102,7 @@ font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-right = bootmenu folder-mng vimwiki calculator mail brightness keymap battery wifi ethernet disk cpu-temp volume
+modules-right = check-updates bootmenu folder-mng vimwiki calculator mail brightness keymap battery wifi ethernet disk cpu-temp volume
 
 tray-position = right
 tray-background = ${root.background}
@@ -353,3 +353,11 @@ click-left = dmenu_shutdown && polybar-msg hook bootmenu 1
 format-underline= #0000
 format-foreground = ${colors.secondary}
 initial = 1
+
+
+[module/check-updates]
+type = custom/script
+exec = { n_updates=$( checkupdates | wc -l ); [[ -n "$n_updates" ]] && echo " : $n_updates" || echo " :0"; }
+interval = 14400
+;format-foreground = #d76f48
+format-foreground = #7777ff
