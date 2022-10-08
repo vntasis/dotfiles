@@ -102,7 +102,8 @@ font-0 = Hack:pixelsize=10;1
 font-1 = mononokiNerdFont:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-right = check-updates bootmenu folder-mng vimwiki calculator mail brightness keymap battery wifi ethernet disk cpu-temp volume
+modules-right = check-updates mail keymap battery wifi ethernet disk cpu-temp brightness volume
+modules-center = bootmenu folder-mng vimwiki calculator
 
 tray-position = right
 tray-background = ${root.background}
@@ -348,7 +349,7 @@ initial = 1
 
 [module/bootmenu]
 type = custom/ipc
-hook-0 = echo "  ⏽"
+hook-0 = echo "⏽    ⏽"
 click-left = dmenu_shutdown && polybar-msg hook bootmenu 1
 format-underline= #0000
 format-foreground = ${colors.secondary}
