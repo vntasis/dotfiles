@@ -362,3 +362,4 @@ exec = { n_updates=$( checkupdates | wc -l ); [[ -n "$n_updates" ]] && echo "
 interval = 14400
 ;format-foreground = #d76f48
 format-foreground = #7777ff
+click-left = notify-send -u low 'Packages to update' "$(checkupdates | awk '{ print $1 }')"
