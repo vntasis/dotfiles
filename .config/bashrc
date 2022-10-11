@@ -151,6 +151,11 @@ alias pdf2png="pdftoppm -png"
 
 # Functions
 
+# Convert txt to pdf
+txt2pdf () {
+    enscript -p - "$1" | ps2pdf - "$2"
+}
+
 # Update all conda environments
 conda_update () {
     conda env list | awk '$0!~"^#" { print $1 }' | xargs -i mamba update --all -n {}
