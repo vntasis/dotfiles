@@ -8,5 +8,8 @@ quickmarks='/home/vntasis/.config/qutebrowser/quickmarks'
 # fzf_menu selection
 url=$(fzf_menu $quickmarks 'Select a quickmark:' | cut -d ' ' -f2)
 
-# Save quickmark to a temporary file
-echo $url > /home/vntasis/.quickmark
+## Save quickmark to a temporary file
+#echo $url > /home/vntasis/.quickmark
+
+# Open url(s) in browser
+test -n "$url" && $BROWSER $url
