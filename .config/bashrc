@@ -128,7 +128,7 @@ export SINGULARITY_TMPDIR="/home/vntasis/.singularity/tmp"
 # Alias
 alias ncol="awk '{print NF; exit}'"
 alias tmux="TERM=screen-256color-bce tmux"
-alias vimwiki="vim ~/vimwiki/index.md"
+alias vimwiki="vim ~/vimwiki/index.md.gpg"
 alias config="git --git-dir=$HOME/projects/config/ \
     --work-tree=$HOME"
 alias weather="curl -Ss wttr.in"

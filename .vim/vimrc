@@ -37,6 +37,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'LukeGoodsell/nextflow-vim'
 Plug 'mbbill/undotree'
 Plug 'dense-analysis/ale'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 "" Some basics
@@ -152,7 +153,7 @@ map <leader>d :call ToggleNetrw()<CR>
 
 " vimwiki configuration
 let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+                      \ 'syntax': 'markdown', 'ext': '.md.gpg'}]
 "let g:vimwiki_global_ext = 0 " Do not affect md files outside vimwiki
 
 
