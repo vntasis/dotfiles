@@ -275,7 +275,7 @@ format-foreground = #76a26f
 
 [module/battery]
 type = custom/script
-exec = { level=$( acpi | cut -d ',' -f 2 | grep -o '[[:digit:]]' | tr -d '\n' ); [[ -n "$level" && "$level" -lt 6 ]] && notify-send -u critical 'BATTERY' 'Critically low'; bat=$(acpi | sed 's/Full,/, :/g' | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
+exec = { level=$( acpi | cut -d ',' -f 2 | grep -o '[[:digit:]]' | tr -d '\n' ); [[ -n "$level" && "$level" -lt 11 ]] && notify-send -u critical 'BATTERY' 'Critically low'; bat=$(acpi | sed 's/Full,/, :/g' | sed 's/Discharging,/, :/g' | sed 's/Charging,/, :/g' | cut -d ',' -f 2); [[ -z $bat ]] && echo No battery || echo $bat; }
 interval = 5
 format-foreground = #bddf0b
 click-left = tlpui
