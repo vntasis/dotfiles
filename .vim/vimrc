@@ -162,9 +162,9 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_left_sep             = '»'
-let g:airline_left_sep             = ' '
+let g:airline_left_sep             = ' '
 let g:airline_right_sep            = '«'
-let g:airline_right_sep            = ''
+let g:airline_right_sep            = ' '
 let g:airline_symbols.crypt        = '🔒'
 let g:airline_symbols.linenr       = '☰'
 let g:airline_symbols.linenr       = '␊'
@@ -183,9 +183,9 @@ let g:airline_symbols.whitespace   = 'Ξ'
 " tmuxline configuration
 "let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : ' ',
+    \ 'left' : '',
     \ 'left_alt': '⏽',
-    \ 'right' : '',
+    \ 'right' : '',
     \ 'right_alt' : '⏽',
     \ 'space' : ' '}
 
