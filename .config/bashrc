@@ -30,6 +30,10 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
+# cd related configuration
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 [ -x /usr/bin/lesspipe.sh ] && export LESSOPEN="|lesspipe.sh %s"
