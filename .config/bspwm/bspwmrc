@@ -56,6 +56,7 @@ bspc rule -a 'calc' state=floating
 bspc rule -a 'Sxiv:wallpaper' state=floating
 bspc rule -a 'mpv:video0' state=floating sticky=on
 bspc rule -a 'fzf_menu' state=floating sticky=on
+bspc rule -a 'Nextcloud:nextcloud' state=floating border=off center=off rectangle=420x600+1172+30
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a Chromium desktop='^2'
 #bspc rule -a mplayer2 state=floating
