@@ -226,9 +226,14 @@ map <leader>v :mkview<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <leader>o :setlocal spell! spelllang=en<CR>
 
-" Autocomplete shortcuts
+
+" Autocomplete shortcuts. Check also :h ins-completion
+  "file names
 inoremap ;: <C-x><C-f>
+  "keywords in the current file
 inoremap ;; <C-n>
+  " keywords in dictionary
+inoremap ;, <C-x><C-k>
 
 " Word count shortcuts
 nnoremap <leader>n :w \| -1r !wc %<CR>
