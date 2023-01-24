@@ -33,6 +33,7 @@ Plug 'LukeGoodsell/nextflow-vim'
 Plug 'mbbill/undotree'
 Plug 'dense-analysis/ale'
 Plug 'jamessan/vim-gnupg'
+Plug 'ron89/thesaurus_query.vim'
 call plug#end()
 
 "" Some basics
@@ -235,6 +236,11 @@ inoremap ;; <C-n>
   " keywords in dictionary
 inoremap ;, <C-x><C-k>
 
+" Configure Thesaurus queries
+let g:tq_openoffice_en_file="~/.vim/thesaurus/th_en_US_new"
+nnoremap <Leader>sy :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <Leader>sy y:ThesaurusQueryReplace <C-r>"<CR>
+
 " Word count shortcuts
 nnoremap <leader>n :w \| -1r !wc %<CR>
 nnoremap <leader>N :w \| -1r !detex % \| wc<CR>
@@ -244,7 +250,7 @@ vnoremap <leader>n :!wc<CR>
 vnoremap <leader>H y:!echo '\#==========Cheatsheet search==========\#' && cht.sh <C-r>" <CR>
 
 " Alias for substitution
-nnoremap <leader>s :%s//g<Left><Left>
+nnoremap <leader>su :%s//g<Left><Left>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
