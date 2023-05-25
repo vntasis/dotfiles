@@ -129,7 +129,7 @@ export PATH=$PATH:$HOME/bin
 export LESS="-R"
 export FZF_DEFAULT_OPTS="--cycle --preview='preview {}'"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export APPTAINER_TMPDIR="/home/vntasis/.apptainer/tmp"
+export APPTAINER_TMPDIR="$HOME/.apptainer/tmp"
 
 ## XDG DIRS
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}

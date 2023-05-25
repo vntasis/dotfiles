@@ -2,7 +2,7 @@
 
 # dmenu script for Lock, Logout, Restart, Shutdown, Sleep, Hibernate
 lock () {
-    /home/vntasis/.config/i3/lock.sh
+    "$HOME/.config/i3/lock.sh"
 }
 
 actions="Lock\nLogout\nRestart\nShutdown\nSleep\nHibernate"

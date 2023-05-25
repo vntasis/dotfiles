@@ -6,7 +6,7 @@
 # Variables
 [ -z $1 ] && lang="english" || lang=$1
 [ -z $2 ] && engine="pdflatex" || engine=$2
-wiki_path="/home/vntasis/arch-wiki-md-repo/wiki/_content/$lang"
+wiki_path="$HOME/projects/arch-wiki-md-repo/wiki/_content/$lang"
 
 # Fzf or dmenu selection | Pandoc transformation | Zathura presentation
 #file=$(ls -1 $wiki_path | fzf --preview='' -e)

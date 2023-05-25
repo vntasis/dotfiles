@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path="/home/vntasis/projects/Color-Scripts/color-scripts"
+path="$HOME/projects/Color-Scripts/color-scripts"
 src="$(ls -1 $path | shuf -n1)"
 
 # Run it and wait

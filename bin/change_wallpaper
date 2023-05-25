@@ -7,8 +7,8 @@ image=$(find /usr/share/backgrounds/ -iname '*.jpg' -o -iname '*.png'  | sxiv -i
 [ -z "$image" ] && exit 0
 
 # Set wallpaper
-wall_path="/home/vntasis/.config/wallpaper"
+wall_path="$HOME/.config/wallpaper"
 [ -e "$wall_path" ] && unlink "$wall_path"
 ln -s "$image" "$wall_path"
 DISPLAY=:0 feh --bg-scale "$wall_path"
-#DISPLAY=:0 feh --bg-scale "$(echo "/home/vntasis/Pictures/$(shuf -n1 /home/vntasis/.wallpapers)")"
+#DISPLAY=:0 feh --bg-scale "$(echo $HOME/Pictures/$(shuf -n1 $HOME/.wallpapers))"

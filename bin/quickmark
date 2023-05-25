@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # File
-quickmarks='/home/vntasis/.config/qutebrowser/quickmarks'
+quickmarks="$HOME/.config/qutebrowser/quickmarks"
 
 # dmenu selection
 url=$(cat $quickmarks | dmenu -fn 'Hack:14' -i -l 20 -p 'Select quickmark:' | cut -d ' ' -f2)

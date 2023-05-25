@@ -2,7 +2,7 @@
 
 set -eu
 
-file=$(find /home/vntasis/ -type f | \
+file=$(find "$HOME/" -type f -not -path "$HOME/miniconda*" | \
     fzf_menu - 'Select file to edit:' '')
 
 tmux new-session "vim $file"
