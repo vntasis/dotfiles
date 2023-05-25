@@ -169,6 +169,7 @@ label-empty-padding = 1
 
 ; Separator in between workspaces
 ; label-separator = |
+label-separator = 
 
 
 [module/i3]
