@@ -23,7 +23,7 @@ alt + Return
 
 # program launcher
 alt + m
-	dmenu_run -fn "Hack:14"
+	dmenu_run_history -fn "Hack:14" -sb "#007cce"
 
 # make sxhkd reload its configuration files:
 alt + r
