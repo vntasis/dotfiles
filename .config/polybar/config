@@ -234,7 +234,7 @@ click-middle = $term -e "ncpamixer" &
 
 [module/weather]
 type = custom/script
-exec = echo "杖 : $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)"
+exec = echo "杖 : $(curl -Ss 'https://wttr.in?0&T&Q' 2> /dev/null | cut -c 16- | head -2 | xargs echo)"
 interval = 3600
 format-foreground = #A4C2F4
 click-left = $term -e 'w3m' 'wttr.in' &
@@ -359,7 +359,7 @@ initial = 1
 
 [module/check-updates]
 type = custom/script
-exec = { n_updates=$( checkupdates | wc -l ); [[ -n "$n_updates" ]] && echo " : $n_updates" || echo " :0"; }
+exec = { n_updates=$( checkupdates | wc -l ); [[ -n "$n_updates" ]] && echo " : $n_updates" || echo " :0"; } 2> /dev/null
 interval = 14400
 ;format-foreground = #d76f48
 format-foreground = #7777ff
