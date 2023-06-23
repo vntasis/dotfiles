@@ -62,6 +62,7 @@ set hlsearch                    " highlight all search pattern matches
 highlight CursorLine ctermbg=Yellow cterm=bold guibg=#2b2b2b
 highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
 set list listchars=tab:\|\-,trail:·,eol:¬ " Show trailing white space and end of line characters as a character
+"set completeopt=menu,menuone,popup,noselect,noinsert
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
@@ -237,9 +238,19 @@ nnoremap <leader>u :UndotreeToggle<CR>
 
 "***ALE***
 " ALE lsp configuration
-let g:ale_enabled=0
 nnoremap <leader>a :ALEToggle<CR>
-set completeopt=menu,menuone,popup,noselect,noinsert
+let g:ale_enabled=0
+let g:airline#extensions#ale#enabled = 1
+let g:ale_virtualtext_cursor = 'current'
+let g:ale_set_balloons = 1
+let g:ale_disable_lsp = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'r': ['styler'],
+\   'python': ['isort', 'black'],
+\   'tex': ['textlint'],
+\   'markdown': ['textlint', 'pandoc'],
+\}
 
 "***Thesaurus Query***
 " Configure Thesaurus queries
