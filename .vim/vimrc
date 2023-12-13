@@ -408,6 +408,7 @@ function! RangeChooser()
     redraw!
 endfunction
 command! -bar RangerChooser call RangeChooser()
+map <leader>f :RangerChooser<CR>
 
 
 
