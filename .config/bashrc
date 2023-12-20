@@ -163,6 +163,12 @@ alias pdf2png="pdftoppm -png"
 
 # Functions
 
+# Detex a tex file to a text file with '.md' suffix
+dx () {
+    input="$(basename -s '.tex' $1)"
+    detex "${input}.tex" > "${input}.md"
+}
+
 # Convert txt to pdf
 txt2pdf () {
     enscript -p - "$1" | ps2pdf - "$2"
