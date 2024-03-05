@@ -425,6 +425,7 @@ autocmd FileType tex nnoremap <buffer> <leader>c :w \| !pdflatex %<CR><CR>
 autocmd FileType tex nnoremap <buffer> <leader>b :w \| !biber "$(basename -s .tex %)"<CR><CR>
 autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>c :w \| !pandoc % -t beamer -o "$(basename -s md %)pdf" <CR><CR>
 autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>b :w \| !pandoc % -s -t beamer --biblatex -o "$(basename -s md %)tex" <CR><CR>
+autocmd BufRead,BufNewFile *.md nnoremap <buffer> <leader>g :w \| !pandoc % -f gfm -t pdf -o - \| zathura - & <CR><CR>
 autocmd BufRead,BufNewFile *.Rmd nnoremap <buffer> <leader>c :w \| !echo "library(rmarkdown); render('<c-r>%')" \| R --vanilla<CR><CR>
 
 
