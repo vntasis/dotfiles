@@ -341,7 +341,7 @@ command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=h
 
 " FileType specific identation
 autocmd FileType tex setlocal ts=4 expandtab sw=2 sts=2 autoindent
-autocmd FileType python,awk,sh setlocal ts=4 expandtab sw=4 sts=4 autoindent
+autocmd FileType python,awk,sh,dockerfile setlocal ts=4 expandtab sw=4 sts=4 autoindent
 autocmd BufRead,BufNewFile *.R,*.md,*.md.gpg,vimrc,*.nf setlocal ts=4 expandtab sw=2 sts=2 autoindent
 
 " Center your line every time you go to insert mode
