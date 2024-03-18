@@ -253,8 +253,8 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'r': ['styler'],
 \   'python': ['isort', 'black'],
-\   'tex': ['textlint'],
-\   'markdown': ['textlint', 'pandoc'],
+\   'tex': ['latexindent'],
+\   'markdown': ['pandoc'],
 \}
 
 "***Thesaurus Query***
