@@ -2,5 +2,5 @@
 
 set -eu
 
-alacritty --class 'RSS,fzf_menu' -e 'rssreader_fzf'
+alacritty --class 'fzf_menu,RSS' -e 'rssreader_fzf'
 
