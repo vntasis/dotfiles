@@ -281,7 +281,7 @@ rcd() {
 
 # Run screenfetch on startup
 [[ $(uptime -p | awk 'END{if (match($0,"[0-9]+.minutes")) print substr($0,RSTART,RLENGTH); }' \
-    | awk '{print $1}') -lt 6 ]] && neofetch
+    | awk '{print $1}') -lt 6 ]] && fastfetch
 
 
 
