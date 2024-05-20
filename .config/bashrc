@@ -113,6 +113,8 @@ if ! shopt -oq posix; then
 fi
 
 
+# Use z to navigate around faster
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 
 # _               _
@@ -131,6 +133,7 @@ export FZF_DEFAULT_OPTS="--cycle --preview='preview {}'"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export APPTAINER_TMPDIR="$HOME/.apptainer/tmp"
+export _Z_DATA="$HOME/.local/share/jump_around/z"
 
 ## XDG DIRS
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
