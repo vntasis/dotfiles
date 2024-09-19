@@ -30,6 +30,7 @@ Plug 'eigenfoo/stan-vim'
 "Plug 'dbeniamine/cheat.sh-vim'
 "Writing
 Plug 'ron89/thesaurus_query.vim'
+"Plug 'junegunn/goyo.vim'
 "Other
 Plug 'vimwiki/vimwiki'
 Plug 'jamessan/vim-gnupg'
@@ -118,7 +119,7 @@ let g:netrw_liststyle = 3      " change the default view type in netrw
 let g:netrw_banner = 0         " remove the directory banner from the netrw view
 let g:netrw_browse_split = 4   " change how files are opened
 let g:netrw_winsize = 25       " change the default window size for netrw
-let g:netrw_altv = 1           " change from left splitting to right splitting
+let g:netrw_altv = 0           " change from left splitting to right splitting
 "map <leader>d :Vex<CR>
 
 let g:NetrwIsOpen=0
