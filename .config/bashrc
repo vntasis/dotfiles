@@ -115,6 +115,11 @@ fi
 
 # Use z to navigate around faster
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+unalias z 2> /dev/null
+z() { # Combine z with fzf
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
 
 
 # _               _
@@ -129,7 +134,7 @@ export EDITOR=$(which vim)
 export BROWSER=$(which librewolf)
 export PATH=$PATH:$HOME/bin
 export LESS="-R"
-export FZF_DEFAULT_OPTS="--cycle --preview='preview {}'"
+export FZF_DEFAULT_OPTS="--cycle"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export APPTAINER_TMPDIR="$HOME/.apptainer/tmp"
